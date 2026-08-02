@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --primary: #0f172a;
+  --school-primary-50: #3dab8c;   
+  --school-primary-100: #0a4b47;  
+  --school-primary-400: #0d3a37;  
+  --school-primary-500: #001906;  
+  --school-primary-900: #001906;
+}
+
+html, body, #__next {
+  height: 100%;
+  font-family: serif;
+  overflow-x: hidden;
+}
+
+/* Prevent horizontal overflow on all devices */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.bn-font {
+  font-family: 'Bornomala', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Noto Sans Bengali", sans-serif;
+  font-weight: 700;
+}
+
+/* Local Bornomala font (placed in `public/fonts/Bornomala/Bornomala-Bold.ttf`) */
+@font-face {
+  font-family: 'Bornomala';
+  src: url('/fonts/Bornomala/Bornomala-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Text stroke utility for outlining text (black stroke) */
+.text-stroke {
+  -webkit-text-stroke: 0.06rem #000;
+  text-shadow: 0.06rem #000 !important;
+}
+
+/* Notice marquee animation - scrolls from right to left */
+@keyframes marquee {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+.marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-content {
+  animation: marquee 25s linear infinite;
+  white-space: nowrap;
+}
+
+/* This is the class the React component applies/removes */
+.marquee-content.paused {
+  animation-play-state: paused;
+}
+
+/* Typewriter cursor */
+.type-cursor {
+  display: inline-block;
+  animation: blink 1s steps(2, start) infinite;
+  font-size: xx-small;
+  color: aliceblue;
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+/* Topbar responsive background images (use public/ path) */
+.topbar-bg {
+  background-image: url('/images/Bannerbuilding.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+}
+
+.topbar-bg-inner {
+  background-image: radial-gradient(circle at center, rgb(0 87 67 / 83%) 0%, rgb(0 24 7 / 95%) 70%, rgb(0 24 7) 100%);
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  .topbar-bg {
+    background-image: url('/images/Bannerbuilding.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+  }
+}
+
+/* Stronger and more even outline tuned for Bangla glyphs */
+.bn-text-stroke {
+  text-shadow: 1px 2px 0 #000, -2px 0 0 #000000, 2px 1px 0 #000, 3px -2px 0 #000;
+}
+
+/* Responsive topbar container - prevent overflow */
+.topbar-container {
+  overflow: hidden;
+}
+
+/* Responsive text scaling for topbar */
+@media (max-width: 640px) {
+  .topbar-title {
+    font-size: 1.1rem !important;
+    transform: scaleX(1.1);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .topbar-title {
+    font-size: 1.8rem !important;
+    transform: scaleX(1.2);
+  }
+}
+
+/* Fix sidebar hover menu for tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sidebar-menu > li:hover > ul {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar-scroll::-webkit-scrollbar,
+aside::-webkit-scrollbar,
+.main-content::-webkit-scrollbar {
+  width: 2px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track,
+aside::-webkit-scrollbar-track,
+.main-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb,
+aside::-webkit-scrollbar-thumb,
+.main-content::-webkit-scrollbar-thumb {
+  background: #3dab8c;
+  border-radius: 10px;
+}
+
+/* Sidebar overflow - allow nested dropdowns to show */
+.sidebar-scroll {
+  overflow: visible;
+}
+
+/* Responsive image handling */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Custom scrollbar for main content */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #3dab8c;
+  border-radius: 10px;
+}
+
+/* Hide scrollbar for tablet nav */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
