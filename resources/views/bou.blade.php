@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Board of Trustees - Hazera-Taju Degree College')
+
 @section('content')
     @php
         $setting = \App\Models\Setting::first();
@@ -18,7 +20,7 @@
                         </svg>
                     </div>
                 </div>
-                <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ $setting?->bou_body ?? 'Board of Trustees' }}</h1>
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ $setting?->bou_body ?? __('website.board_of_trustees') }}</h1>
                 <div class="w-24 h-1 bg-[#3dab8c] mx-auto"></div>
             </div>
 
@@ -26,7 +28,7 @@
             <div class="prose max-w-none">
                 <div class="bg-gray-50 border-l-4 border-[#3dab8c] p-6 rounded-r-lg">
                     <p class="text-gray-700 leading-relaxed text-lg">
-                        {{ $setting?->bou_description ?? 'The Board of Trustees is the governing body responsible for overseeing the administration and strategic direction of the institution. Composed of distinguished individuals with diverse expertise, the board ensures the college maintains its commitment to academic excellence, integrity, and service to society.' }}
+                        {{ $setting?->bou_description ?? __('website.bou_fallback') }}
                     </p>
                 </div>
             </div>

@@ -26,8 +26,11 @@ class CustomPage2Controller extends Controller
     {
         $validated = $request->validate([
             'page_name' => 'required|string|max:255',
+            'page_name_bn' => 'nullable|string|max:255',
             'title' => 'nullable|string|max:255',
+            'title_bn' => 'nullable|string|max:255',
             'description' => 'nullable|string',
+            'description_bn' => 'nullable|string',
             'route' => 'nullable|string|max:255',
             'status' => 'boolean',
         ]);
@@ -36,7 +39,7 @@ class CustomPage2Controller extends Controller
 
         CustomPage2::create($validated);
 
-        return redirect()->route('admin.custom-page2.index')->with('success', 'Page created successfully.');
+        return redirect()->route('admin.custom-page2.index')->with('success', __('admin.page_created'));
     }
 
     public function edit(CustomPage2 $custom_page2)
@@ -48,8 +51,11 @@ class CustomPage2Controller extends Controller
     {
         $validated = $request->validate([
             'page_name' => 'required|string|max:255',
+            'page_name_bn' => 'nullable|string|max:255',
             'title' => 'nullable|string|max:255',
+            'title_bn' => 'nullable|string|max:255',
             'description' => 'nullable|string',
+            'description_bn' => 'nullable|string',
             'route' => 'nullable|string|max:255',
             'status' => 'boolean',
         ]);
@@ -58,7 +64,7 @@ class CustomPage2Controller extends Controller
 
         $custom_page2->update($validated);
 
-        return redirect()->route('admin.custom-page2.index')->with('success', 'Page updated successfully.');
+        return redirect()->route('admin.custom-page2.index')->with('success', __('admin.page_updated'));
     }
 
     public function destroy(CustomPage2 $custom_page2)
@@ -69,7 +75,7 @@ class CustomPage2Controller extends Controller
         }
         $custom_page2->delete();
 
-        return redirect()->route('admin.custom-page2.index')->with('success', 'Page deleted successfully.');
+        return redirect()->route('admin.custom-page2.index')->with('success', __('admin.page_deleted'));
     }
 
     public function items(CustomPage2 $custom_page2)
@@ -107,7 +113,7 @@ class CustomPage2Controller extends Controller
             $item->update(['file_path' => $path]);
         }
 
-        return back()->with('success', 'Item added successfully.');
+        return back()->with('success', __('admin.item_added'));
     }
 
     public function destroyItem(CustomPage2 $custom_page2, CustomPage2Item $item)
@@ -116,6 +122,6 @@ class CustomPage2Controller extends Controller
         if ($item->file_path) Storage::disk('public')->delete($item->file_path);
         $item->delete();
 
-        return back()->with('success', 'Item deleted successfully.');
+        return back()->with('success', __('admin.item_deleted'));
     }
 }

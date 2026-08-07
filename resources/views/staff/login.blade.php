@@ -15,8 +15,8 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                <h2 class="text-3xl font-extrabold tracking-tight relative z-10">Staff's Panel</h2>
-                <p class="text-sm mt-2 text-green-100 font-medium relative z-10">Sign in to manage your account</p>
+                <h2 class="text-3xl font-extrabold tracking-tight relative z-10">{{ __('website.staff_panel') }}</h2>
+                <p class="text-sm mt-2 text-green-100 font-medium relative z-10">{{ __('website.sign_in_manage') }}</p>
             </div>
 
             <div class="p-2">
@@ -26,7 +26,7 @@
 
                     <!-- Staff Code -->
                     <div>
-                        <label for="staff_code" class="block text-sm font-semibold text-gray-700 mb-1">Staff Code</label>
+                        <label for="staff_code" class="block text-sm font-semibold text-gray-700 mb-1">{{ __('website.staff_code') }}</label>
                         <div class="relative rounded-md shadow-sm">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -36,13 +36,13 @@
                             </div>
                             <input type="text" name="staff_code" id="staff_code"
                                 class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3dab8c] focus:border-transparent transition"
-                                placeholder="Enter your 5-digit code" required>
+                                placeholder="{{ __('website.enter_5_digit_code') }}" required>
                         </div>
                     </div>
 
                     <!-- Password -->
                     <div>
-                        <label for="password" class="block text-sm font-semibold text-gray-700 mb-1">Password</label>
+                        <label for="password" class="block text-sm font-semibold text-gray-700 mb-1">{{ __('website.password') }}</label>
                         <div class="relative rounded-md shadow-sm">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -52,7 +52,7 @@
                             </div>
                             <input type="password" name="password" id="password"
                                 class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3dab8c] focus:border-transparent transition"
-                                placeholder="Enter your password" required>
+                                placeholder="{{ __('website.enter_password') }}" required>
                         </div>
                     </div>
 
@@ -62,12 +62,11 @@
                             <input id="remember_me" name="remember" type="checkbox"
                                 class="h-4 w-4 text-[#3dab8c] focus:ring-[#3dab8c] border-gray-300 rounded cursor-pointer">
                             <label for="remember_me"
-                                class="ml-2 block text-sm text-gray-700 cursor-pointer select-none">Remember me</label>
+                                class="ml-2 block text-sm text-gray-700 cursor-pointer select-none">{{ __('website.remember_me') }}</label>
                         </div>
 
                         <div class="text-sm">
-                            <a href="#" class="font-semibold text-[#0d3a37] hover:text-[#3dab8c] transition">Forgot
-                                password?</a>
+                            <a href="#" class="font-semibold text-[#0d3a37] hover:text-[#3dab8c] transition">{{ __('website.forgot_password') }}</a>
                         </div>
                     </div>
 
@@ -83,7 +82,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </span>
-                            Secure Login
+                            {{ __('website.secure_login') }}
                         </button>
                     </div>
                 </form>
@@ -94,7 +93,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    For technical support, contact the IT desk.
+                    {{ __('website.technical_support') }}
                 </p>
             </div>
         </div>

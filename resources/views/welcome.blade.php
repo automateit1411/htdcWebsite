@@ -1,9 +1,23 @@
 @extends('layouts.app')
 
+@section('title', 'Hazera-Taju Degree College - Home')
+
 @section('content')
     @php
         // Fetch settings for about information
         $setting = \App\Models\Setting::first();
+        $locale = app()->getLocale();
+        
+        // Helper function to get locale-appropriate value
+        $getLocalizedValue = function($field, $fallback = null) use ($setting, $locale) {
+            if (!$setting) return $fallback;
+            
+            $localizedField = $field . '_bn';
+            if ($locale === 'bn' && $setting->$localizedField) {
+                return $setting->$localizedField;
+            }
+            return $setting->$field ?? $fallback;
+        };
     @endphp
 
     <div class="space-y-6">
@@ -129,14 +143,14 @@
                                     d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
                                 </path>
                             </svg>
-                            <p class="text-gray-600 text-lg font-medium">No slider images available</p>
+                            <p class="text-gray-600 text-lg font-medium">{{ __('website.no_slider') }}</p>
                             
                         </div>
                     </section>
                 @endif
                 
                 <section>
-                    <div class="bg-[#0d3a37] text-white text-md sm:text-xl p-1 md:text-xl font-bold text-center">Welcome to Hazera-Taju Degree College</div>
+                    <div class="bg-[#0d3a37] text-white text-md sm:text-xl p-1 md:text-xl font-bold text-center">{{ __('website.welcome_title') }}</div>
                 </section>
 
                 <!-- About Content with Link -->
@@ -159,14 +173,14 @@
                         <!-- Content -->
                         <div class="w-full sm:w-2/3  text-justify">
                             <h3 class="text-lg font-bold text-gray-800 mb-2 hidden">
-                                {{ $setting?->about_title ?? 'About Hazera-Taju Degree College' }}
+                                {{ $getLocalizedValue('about_title', __('website.about_college')) }}
                             </h3>
                             <p class="text-gray-700 text-sm leading-relaxed mb-1">
-                                {{ Str::limit(strip_tags($setting?->about_description ?? 'Hazera-Taju Degree College is committed to providing quality education in a non-political environment with modern facilities.'), 300) }}
+                                {{ Str::limit(strip_tags($getLocalizedValue('about_description', __('website.about_fallback'))), 300) }}
                             </p>
                             <a href="{{ route('dynamic.page', 'about') }}"
                                 class="inline-block bg-[#0d3a37] text-white px-4 py-1.5 rounded text-xs font-medium hover:bg-green-800 transition">
-                                See More
+                                {{ __('website.see_more') }}
                             </a>
                         </div>
                     </div>
@@ -186,25 +200,25 @@
                                 <!-- Rounded Image -->
                                 @if($setting && $setting->founder_image)
                                     <img src="{{ asset('storage/' . $setting->founder_image) }}"
-                                        alt="{{ $setting->founder_name ?? 'Founder' }}"
+                                        alt="{{ $setting->founder_name ?? __('website.founder_title') }}"
                                         class="w-24 h-24 rounded-full object-cover border-3 border-[#3dab8c] shadow">
                                 @else
-                                    <img src="{{ asset('images/logo.svg') }}" alt="Founder"
+                                    <img src="{{ asset('images/logo.svg') }}" alt="{{ __('website.founder_title') }}"
                                         class="w-24 h-24 rounded-full object-cover border-3 border-[#3dab8c] shadow">
                                 @endif
                                 <div>
                                     <h3 class="text-base font-bold text-gray-800">
-                                        {{ $setting?->founder_name ?? 'Founder Name' }}
+                                        {{ $getLocalizedValue('founder_name', __('website.founder_name')) }}
                                     </h3>
-                                    <p class="text-xs text-gray-600">{{ $setting?->founder_title ?? 'Founder' }}</p>
+                                    <p class="text-xs text-gray-600">{{ $getLocalizedValue('founder_title', __('website.founder_title')) }}</p>
                                 </div>
                             </div>
                             <p class="text-gray-700 text-xs leading-relaxed mb-3">
-                                {{ Str::words($setting?->founder_message ?? 'Visionary leader who established this institution with a mission to provide quality education.', 10, '...') }}
+                                {{ Str::words($getLocalizedValue('founder_message', __('website.founder_fallback')), 10, '...') }}
                             </p>
                             <a href="{{ route('founder') }}"
                                 class="inline-block bg-[#0d3a37] text-white px-4 py-1.5 rounded text-xs font-medium hover:bg-green-800 transition">
-                                See More
+                                {{ __('website.see_more') }}
                             </a>
                         </div>
                     </div>
@@ -216,25 +230,25 @@
                                 <!-- Rounded Image -->
                                 @if($setting && $setting->principal_image)
                                     <img src="{{ asset('storage/' . $setting->principal_image) }}"
-                                        alt="{{ $setting->principal_name ?? 'Principal' }}"
+                                        alt="{{ $setting->principal_name ?? __('website.principal_title') }}"
                                         class="w-24 h-24 rounded-full object-cover border-3 border-[#3dab8c] shadow">
                                 @else
-                                    <img src="{{ asset('images/logo.svg') }}" alt="Principal"
+                                    <img src="{{ asset('images/logo.svg') }}" alt="{{ __('website.principal_title') }}"
                                         class="w-24 h-24 rounded-full object-cover border-3 border-[#3dab8c] shadow">
                                 @endif
                                 <div>
                                     <h3 class="text-base font-bold text-gray-800">
-                                        {{ $setting?->principal_name ?? 'Principal Name' }}
+                                        {{ $getLocalizedValue('principal_name', __('website.principal_name')) }}
                                     </h3>
-                                    <p class="text-xs text-gray-600">{{ $setting?->principal_title ?? 'Principal' }}</p>
+                                    <p class="text-xs text-gray-600">{{ $getLocalizedValue('principal_title', __('website.principal_title')) }}</p>
                                 </div>
                             </div>
                             <p class="text-gray-700 text-xs leading-relaxed mb-3">
-                                {{ Str::words($setting?->principal_message ?? 'Dedicated to maintaining academic excellence and fostering innovation.', 10, '...') }}
+                                {{ Str::words($getLocalizedValue('principal_message', __('website.principal_fallback')), 10, '...') }}
                             </p>
                             <a href="{{ route('principal') }}"
                                 class="inline-block bg-[#0d3a37] text-white px-4 py-1.5 rounded text-xs font-medium hover:bg-green-800 transition">
-                                See More
+                                {{ __('website.see_more') }}
                             </a>
                         </div>
                     </div>
@@ -252,12 +266,12 @@
                                     d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                             </svg>
                             <div>
-                                <p class="text-xs opacity-90">Total Visitors</p>
+                                <p class="text-xs opacity-90">{{ __('website.total_visitors') }}</p>
                                 <p class="text-2xl font-bold">{{ number_format($totalVisitors) }}</p>
                             </div>
                         </div>
                         <div class="border-l border-white/30 pl-3">
-                            <p class="text-xs opacity-90 mb-1">Today</p>
+                            <p class="text-xs opacity-90 mb-1">{{ __('website.today') }}</p>
                             <p class="text-xl font-bold">{{ number_format($todayVisitors) }}</p>
                         </div>
                     </div>

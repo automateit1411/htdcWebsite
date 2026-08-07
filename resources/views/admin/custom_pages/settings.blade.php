@@ -4,14 +4,14 @@
 <div class="max-w-6xl mx-auto py-8 px-4">
     <div class="flex items-center justify-between mb-8">
         <div>
-            <h1 class="text-3xl font-bold text-gray-800">Page Settings: <span class="text-[#3dab8c]">{{ $custom_page->page_name }}</span></h1>
+            <h1 class="text-3xl font-bold text-gray-800">{{ __('admin.page_settings') }} <span class="text-[#3dab8c]">{{ $custom_page->page_name }}</span></h1>
             <p class="text-gray-500 mt-1">Manage the content and design of this page.</p>
         </div>
         <a href="{{ route('admin.custom-pages.index') }}" class="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-xl text-gray-600 hover:bg-gray-50 transition-all font-medium shadow-sm">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            Back to List
+            {{ __('admin.back_to_list') }}
         </a>
     </div>
 
@@ -37,33 +37,49 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
-                    Edit Page Content
+                    {{ __('admin.edit_page_content') }}
                 </h2>
-                <p class="text-green-100 text-sm mt-1">This design follows the About section template.</p>
+                <p class="text-green-100 text-sm mt-1">{{ __('admin.about_section_template') }}</p>
             </div>
             
             <div class="p-8 space-y-8">
                 <!-- Display Title -->
                 <div class="space-y-2">
-                    <label for="title" class="block text-sm font-bold text-gray-700 uppercase tracking-wider">Display Title</label>
+                    <label for="title" class="block text-sm font-bold text-gray-700 uppercase tracking-wider">{{ __('admin.display_title') }}</label>
                     <input type="text" name="title" id="title" value="{{ old('title', $custom_page->title) }}" placeholder="Enter the main title for this page..."
                         class="w-full px-5 py-4 border-2 border-gray-100 rounded-xl focus:ring-2 focus:ring-[#3dab8c] focus:border-transparent transition duration-200 outline-none text-xl font-semibold text-gray-800">
                     @error('title') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                 </div>
 
+                <!-- Display Title (Bangla) -->
+                <div class="space-y-2">
+                    <label for="title_bn" class="block text-sm font-bold text-gray-700 uppercase tracking-wider">{{ __('admin.display_title_bn') }}</label>
+                    <input type="text" name="title_bn" id="title_bn" value="{{ old('title_bn', $custom_page->title_bn) }}" placeholder="বাংলায় পৃষ্ঠার শিরোনাম..."
+                        class="w-full px-5 py-4 border-2 border-gray-100 rounded-xl focus:ring-2 focus:ring-[#3dab8c] focus:border-transparent transition duration-200 outline-none text-xl font-semibold text-gray-800 bn-font">
+                    @error('title_bn') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                </div>
+
                 <!-- Description -->
                 <div class="space-y-2">
-                    <label for="description" class="block text-sm font-bold text-gray-700 uppercase tracking-wider">Main Description / Story</label>
+                    <label for="description" class="block text-sm font-bold text-gray-700 uppercase tracking-wider">{{ __('admin.main_description_story') }}</label>
                     <textarea name="description" id="description" rows="12" placeholder="Tell the story of this page..."
                         class="w-full px-5 py-4 border-2 border-gray-100 rounded-xl focus:ring-2 focus:ring-[#3dab8c] focus:border-transparent transition duration-200 outline-none text-gray-700 leading-relaxed text-lg">{{ old('description', $custom_page->description) }}</textarea>
                     @error('description') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                </div>
+
+                <!-- Description (Bangla) -->
+                <div class="space-y-2">
+                    <label for="description_bn" class="block text-sm font-bold text-gray-700 uppercase tracking-wider">{{ __('admin.main_description_story_bn') }}</label>
+                    <textarea name="description_bn" id="description_bn" rows="12" placeholder="বাংলায় এই পৃষ্ঠার বিস্তারিত বিষয়বস্তু লিখুন..."
+                        class="w-full px-5 py-4 border-2 border-gray-100 rounded-xl focus:ring-2 focus:ring-[#3dab8c] focus:border-transparent transition duration-200 outline-none text-gray-700 leading-relaxed text-lg bn-font">{{ old('description_bn', $custom_page->description_bn) }}</textarea>
+                    @error('description_bn') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                 </div>
 
                 <!-- Media Section -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Feature Image with Gallery Option -->
                     <div class="space-y-4">
-                        <label class="block text-sm font-bold text-gray-700 uppercase tracking-wider">Feature Image</label>
+                        <label class="block text-sm font-bold text-gray-700 uppercase tracking-wider">{{ __('admin.feature_image') }}</label>
                         <div class="relative group border-2 border-dashed border-gray-200 rounded-2xl p-6 transition-all hover:border-[#3dab8c] bg-gray-50">
                             <!-- Hidden input for file upload -->
                             <input type="file" name="image" id="image_upload" accept="image/*" class="hidden" onchange="previewImage(event)">
@@ -79,13 +95,13 @@
                                     <svg class="w-5 h-5 text-[#3dab8c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                                     </svg>
-                                    Upload from Computer
+                                    {{ __('admin.upload_from_computer') }}
                                 </button>
                                 <button type="button" onclick="openGalleryModal()" class="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#0d3a37] text-white rounded-xl hover:bg-[#092a28] transition-all font-medium shadow-md">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
-                                    Select from Gallery
+                                    {{ __('admin.select_from_gallery') }}
                                 </button>
                             </div>
                         </div>
@@ -93,7 +109,7 @@
 
                     <!-- Attachment File -->
                     <div class="space-y-4">
-                        <label class="block text-sm font-bold text-gray-700 uppercase tracking-wider">Attachment (PDF/Document)</label>
+                        <label class="block text-sm font-bold text-gray-700 uppercase tracking-wider">{{ __('admin.attachment_pdf_document') }}</label>
                         <div class="border-2 border-dashed border-gray-200 rounded-2xl p-6 bg-gray-50 h-full flex flex-col justify-center items-center text-center group hover:border-[#3dab8c] transition-all">
                             <input type="file" name="file" id="file_upload" class="hidden" onchange="updateFileName(event)">
                             <label for="file_upload" class="cursor-pointer flex flex-col items-center">
@@ -110,7 +126,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
                                 </div>
-                                <p id="fileNameDisplay" class="mt-4 text-sm text-gray-600 font-medium group-hover:text-[#3dab8c]">Click to change document</p>
+                                <p id="fileNameDisplay" class="mt-4 text-sm text-gray-600 font-medium group-hover:text-[#3dab8c]">{{ __('admin.click_to_change_file') }}</p>
                                 <p class="text-[10px] text-gray-400 uppercase mt-1">PDF, DOC, DOCX up to 10MB</p>
                             </label>
                         </div>
@@ -126,7 +142,7 @@
             </div>
             <div class="flex gap-4">
                 <button type="submit" class="px-8 py-4 bg-gradient-to-r from-[#3dab8c] to-[#0d3a37] text-white rounded-xl hover:from-green-600 hover:to-green-800 font-bold shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1">
-                    Save Page Content
+                    {{ __('admin.save_page_content') }}
                 </button>
             </div>
         </div>
@@ -140,7 +156,7 @@
             <!-- Modal Header -->
             <div class="flex justify-between items-center p-6 border-b border-gray-100">
                 <div>
-                    <h3 class="text-2xl font-bold text-gray-800">Select Image from Gallery</h3>
+                    <h3 class="text-2xl font-bold text-gray-800">{{ __('admin.select_image_from_gallery_modal') }}</h3>
                     <p class="text-sm text-gray-500 mt-1">Choose a professional image for your page.</p>
                 </div>
                 <button type="button" onclick="closeGalleryModal()" class="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-full transition-all">
@@ -176,8 +192,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-700">Gallery is empty</h3>
-                        <p class="text-gray-500 mt-2">Upload images to your gallery first.</p>
+                        <h3 class="text-xl font-bold text-gray-700">{{ __('admin.gallery_empty') }}</h3>
+                        <p class="text-gray-500 mt-2">{{ __('admin.upload_images_first') }}</p>
                     </div>
                 @endif
             </div>
@@ -185,10 +201,10 @@
             <!-- Modal Footer -->
             <div class="p-6 border-t border-gray-100 bg-gray-50 flex justify-end gap-3 rounded-b-3xl">
                 <button type="button" onclick="closeGalleryModal()" class="px-6 py-2.5 bg-white border border-gray-200 text-gray-600 font-bold rounded-xl hover:bg-gray-100 transition-all">
-                    Cancel
+                    {{ __('admin.cancel') }}
                 </button>
                 <button type="button" onclick="confirmGallerySelection()" class="px-6 py-2.5 bg-[#3dab8c] text-white font-bold rounded-xl hover:bg-green-600 transition-all shadow-md">
-                    Apply Selected Image
+                    {{ __('admin.apply_selected_image_btn') }}
                 </button>
             </div>
         </div>

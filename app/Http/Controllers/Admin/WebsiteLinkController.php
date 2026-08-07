@@ -34,7 +34,7 @@ class WebsiteLinkController extends Controller
             'sort_order' => $request->sort_order ?? 0,
         ]);
 
-        return redirect()->route('admin.website-links.index')->with('success', 'Link created successfully.');
+        return redirect()->route('admin.website-links.index')->with('success', __('admin.link_created'));
     }
 
     public function edit(WebsiteLink $websiteLink)
@@ -57,18 +57,18 @@ class WebsiteLinkController extends Controller
             'sort_order' => $request->sort_order ?? 0,
         ]);
 
-        return redirect()->route('admin.website-links.index')->with('success', 'Link updated successfully.');
+        return redirect()->route('admin.website-links.index')->with('success', __('admin.link_updated'));
     }
 
     public function destroy(WebsiteLink $websiteLink)
     {
         $websiteLink->delete();
-        return redirect()->route('admin.website-links.index')->with('success', 'Link deleted successfully.');
+        return redirect()->route('admin.website-links.index')->with('success', __('admin.link_deleted'));
     }
 
     public function toggleStatus(WebsiteLink $websiteLink)
     {
         $websiteLink->update(['is_active' => !$websiteLink->is_active]);
-        return back()->with('success', 'Link status updated.');
+        return back()->with('success', __('admin.link_status_updated'));
     }
 }

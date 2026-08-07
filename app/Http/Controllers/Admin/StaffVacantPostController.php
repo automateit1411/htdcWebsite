@@ -41,7 +41,7 @@ class StaffVacantPostController extends Controller
             $post->update(['file_path' => $filePath]);
         }
 
-        return redirect()->route('admin.staff-vacant-posts.index')->with('success', 'Staff vacant post created successfully.');
+        return redirect()->route('admin.staff-vacant-posts.index')->with('success', __('admin.staff_vacant_post_created'));
     }
 
     public function edit(StaffVacantPost $staffVacantPost)
@@ -74,7 +74,7 @@ class StaffVacantPostController extends Controller
             $staffVacantPost->update(['file_path' => $filePath]);
         }
 
-        return redirect()->route('admin.staff-vacant-posts.index')->with('success', 'Staff vacant post updated successfully.');
+        return redirect()->route('admin.staff-vacant-posts.index')->with('success', __('admin.staff_vacant_post_updated'));
     }
 
     public function destroy(StaffVacantPost $staffVacantPost)
@@ -84,6 +84,6 @@ class StaffVacantPostController extends Controller
         }
         
         $staffVacantPost->delete();
-        return redirect()->route('admin.staff-vacant-posts.index')->with('success', 'Staff vacant post deleted successfully.');
+        return redirect()->route('admin.staff-vacant-posts.index')->with('success', __('admin.staff_vacant_post_deleted'));
     }
 }

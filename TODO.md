@@ -6,4 +6,3 @@
 - [ ] Step 3: Test page shows 62 cards
 - [ ] Step 4: Complete!
 
-

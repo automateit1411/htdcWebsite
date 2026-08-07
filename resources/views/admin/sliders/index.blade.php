@@ -5,14 +5,14 @@
     <!-- Page Header -->
     <div class="flex justify-between items-center mb-6">
         <div>
-            <h1 class="text-3xl font-bold text-gray-800">Slider Management</h1>
-            <p class="text-gray-600 mt-1">Manage homepage slider images and settings</p>
+            <h1 class="text-3xl font-bold text-gray-800">{{ __('admin.slider_management') }}</h1>
+            <p class="text-gray-600 mt-1">{{ __('admin.slider_manage_desc') }}</p>
         </div>
         <a href="{{ route('admin.sliders.create') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#3dab8c] to-[#0d3a37] text-white font-medium rounded-lg hover:from-green-600 hover:to-green-800 transition-all shadow-md">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
             </svg>
-            Add New Slider
+            {{ __('admin.add_new_slider') }}
         </a>
     </div>
 
@@ -34,10 +34,10 @@
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gradient-to-r from-[#3dab8c] to-[#0d3a37]">
                     <tr>
-                        <th class="px-6 py-4 text-left text-xs font-medium text-white uppercase tracking-wider">Order</th>
-                        <th class="px-6 py-4 text-left text-xs font-medium text-white uppercase tracking-wider">Image</th>
-                        <th class="px-6 py-4 text-left text-xs font-medium text-white uppercase tracking-wider">Status</th>
-                        <th class="px-6 py-4 text-left text-xs font-medium text-white uppercase tracking-wider">Actions</th>
+                        <th class="px-6 py-4 text-left text-xs font-medium text-white uppercase tracking-wider">{{ __('admin.order') }}</th>
+                        <th class="px-6 py-4 text-left text-xs font-medium text-white uppercase tracking-wider">{{ __('admin.image') }}</th>
+                        <th class="px-6 py-4 text-left text-xs font-medium text-white uppercase tracking-wider">{{ __('admin.status') }}</th>
+                        <th class="px-6 py-4 text-left text-xs font-medium text-white uppercase tracking-wider">{{ __('admin.actions') }}</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -54,11 +54,11 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 @if($slider->is_active)
                                     <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                        Active
+                                        {{ __('admin.active') }}
                                     </span>
                                 @else
                                     <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                        Inactive
+                                        {{ __('admin.inactive') }}
                                     </span>
                                 @endif
                             </td>
@@ -66,21 +66,21 @@
                                 <div class="flex space-x-2">
                                     <a href="{{ route('admin.sliders.edit', $slider) }}" 
                                        class="text-blue-600 hover:text-blue-900 transition-colors">
-                                        Edit
+                                        {{ __('admin.edit') }}
                                     </a>
                                     <form action="{{ route('admin.sliders.toggle-status', $slider) }}" method="POST" class="inline">
                                         @csrf
                                         @method('PATCH')
                                         <button type="submit" class="text-orange-600 hover:text-orange-900 transition-colors">
-                                            {{ $slider->is_active ? 'Deactivate' : 'Activate' }}
+                                            {{ $slider->is_active ? __('admin.deactivate') : __('admin.activate') }}
                                         </button>
                                     </form>
                                     <form action="{{ route('admin.sliders.destroy', $slider) }}" method="POST" class="inline" 
-                                          onsubmit="return confirm('Are you sure you want to delete this slider?');">
+                                          onsubmit="return confirm('{{ __('admin.confirm_delete') }}');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-600 hover:text-red-900 transition-colors">
-                                            Delete
+                                            {{ __('admin.delete') }}
                                         </button>
                                     </form>
                                 </div>
@@ -92,7 +92,7 @@
                                 <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                                 </svg>
-                                <p class="mt-2">No sliders found. Create your first slider!</p>
+                                <p class="mt-2">{{ __('admin.no_sliders_found') }}</p>
                             </td>
                         </tr>
                     @endforelse

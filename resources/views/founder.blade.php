@@ -1,8 +1,22 @@
 @extends('layouts.app')
 
+@section('title', 'Founder - Hazera-Taju Degree College')
+
 @section('content')
 @php
     $setting = \App\Models\Setting::first();
+    $locale = app()->getLocale();
+    
+    // Helper function to get locale-appropriate value
+    $getLocalizedValue = function($field, $fallback = null) use ($setting, $locale) {
+        if (!$setting) return $fallback;
+        
+        $localizedField = $field . '_bn';
+        if ($locale === 'bn' && $setting->$localizedField) {
+            return $setting->$localizedField;
+        }
+        return $setting->$field ?? $fallback;
+    };
 @endphp
 
 <div class="space-y-6">
@@ -13,7 +27,7 @@
             <div class="md:col-span-1 flex justify-center">
                 @if($setting && $setting->founder_image)
                     <img src="{{ asset('storage/' . $setting->founder_image) }}" 
-                         alt="{{ $setting->founder_name ?? 'Founder' }}" 
+                         alt="{{ $getLocalizedValue('founder_name', __('website.founder_title')) }}" 
                          class="w-64 h-64 object-cover rounded-full border-4 border-[#3dab8c] shadow-xl">
                 @else
                     <div class="w-64 h-64 rounded-full bg-gray-200 flex items-center justify-center border-4 border-[#3dab8c]">
@@ -26,22 +40,20 @@
 
             <!-- Founder Information -->
             <div class="md:col-span-2">
-                <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ $setting?->founder_name ?? 'Founder Name' }}</h1>
-                <p class="text-lg text-[#3dab8c] font-semibold mb-4">{{ $setting?->founder_title ?? 'Founder' }}</p>
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ $getLocalizedValue('founder_name', __('website.founder_name')) }}</h1>
+                <p class="text-lg text-[#3dab8c] font-semibold mb-4">{{ $getLocalizedValue('founder_title', __('website.founder_title')) }}</p>
                 
                 <div class="prose max-w-none">
-                    <h2 class="text-xl font-semibold text-gray-700 mb-3">Message from Founder</h2>
+                    <h2 class="text-xl font-semibold text-gray-700 mb-3">{{ __('website.message_from_founder') }}</h2>
                     <blockquote class="border-l-4 border-[#3dab8c] pl-4 py-2 bg-gray-50 italic text-gray-700 rounded-r-lg">
-                        "{{ $setting?->founder_message ?? 'Visionary leader who established this institution with a mission to provide quality education in a non-political environment.' }}"
+                        "{{ $getLocalizedValue('founder_message', __('website.founder_message_fallback')) }}"
                     </blockquote>
                 </div>
 
                 <div class="mt-6 space-y-3">
-                    <h3 class="text-lg font-semibold text-gray-700">About Our Founder</h3>
+                    <h3 class="text-lg font-semibold text-gray-700">{{ __('website.about_our_founder') }}</h3>
                     <p class="text-gray-600 leading-relaxed">
-                        Our founder envisioned an educational institution that would serve as a beacon of knowledge and character development. 
-                        With unwavering commitment to academic excellence and moral values, the founder established Hazera-Taju Degree College 
-                        to provide quality education to students from all backgrounds.
+                        {{ __('website.about_founder_desc') }}
                     </p>
                 </div>
             </div>
@@ -50,19 +62,19 @@
 
     <!-- Additional Information Section -->
     <section class="bg-white p-6 rounded shadow">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Legacy</h2>
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">{{ __('website.our_legacy') }}</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="bg-gradient-to-br from-[#3dab8c] to-[#0d3a37] text-white p-4 rounded-lg">
-                <h3 class="font-bold text-lg mb-2">Quality Education</h3>
-                <p class="text-sm opacity-90">Providing modern education with traditional values since inception</p>
+                <h3 class="font-bold text-lg mb-2">{{ __('website.quality_education') }}</h3>
+                <p class="text-sm opacity-90">{{ __('website.quality_education_desc') }}</p>
             </div>
             <div class="bg-gradient-to-br from-[#3dab8c] to-[#0d3a37] text-white p-4 rounded-lg">
-                <h3 class="font-bold text-lg mb-2">Non-Political</h3>
-                <p class="text-sm opacity-90">Maintaining a peaceful, apolitical learning environment</p>
+                <h3 class="font-bold text-lg mb-2">{{ __('website.non_political') }}</h3>
+                <p class="text-sm opacity-90">{{ __('website.non_political_desc') }}</p>
             </div>
             <div class="bg-gradient-to-br from-[#3dab8c] to-[#0d3a37] text-white p-4 rounded-lg">
-                <h3 class="font-bold text-lg mb-2">Student Success</h3>
-                <p class="text-sm opacity-90">Committed to developing future leaders and responsible citizens</p>
+                <h3 class="font-bold text-lg mb-2">{{ __('website.student_success') }}</h3>
+                <p class="text-sm opacity-90">{{ __('website.student_success_desc') }}</p>
             </div>
         </div>
     </section>

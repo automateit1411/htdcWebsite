@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Staff Profile - Hazera-Taju Degree College')
+
 @section('content')
     <div class="p-4 max-w-5xl mx-auto">
         <a href="{{ url('/staff-information') }}"
-            class="inline-flex items-center gap-1 text-sm text-[#0d3a37] hover:text-green-700 mb-4 font-medium">&larr; Back to Staff
-            List</a>
+            class="inline-flex items-center gap-1 text-sm text-[#0d3a37] hover:text-green-700 mb-4 font-medium">&larr; {{ __('admin.back_to_staff_list') }}</a>
 
         <div x-data="{
                 employeeCode: '{{ $employeeCode }}',
@@ -14,7 +15,7 @@
                 init() {
                     fetch('/proxy/employees/staff')
                         .then(response => {
-                            if (!response.ok) throw new Error('Failed to fetch staff data');
+                            if (!response.ok) throw new Error('{{ __('admin.error') }}');
                             return response.json();
                         })
                         .then(data => {
@@ -23,19 +24,19 @@
                                 found = data[parseInt(this.employeeCode)];
                             }
                             if (!found) {
-                                this.error = 'Staff not found.';
+                                this.error = '{{ __('admin.staff_not_found') }}';
                             } else {
                                 this.staff = found;
                             }
                         })
-                        .catch(err => this.error = err.message || 'Unable to load staff details')
+                        .catch(err => this.error = err.message || '{{ __('admin.error') }}')
                         .finally(() => this.loading = false);
                 }
             }" x-init="init()">
 
             <template x-if="loading">
                 <div class="flex items-center justify-center py-20">
-                    <div class="text-gray-500 text-sm">Loading staff details...</div>
+                    <div class="text-gray-500 text-sm">{{ __('admin.loading_staff_details') }}</div>
                 </div>
             </template>
 
@@ -48,7 +49,7 @@
                     {{-- Header --}}
                     <div class="bg-gradient-to-r from-[#0d3a37] to-[#1a6b5a] p-6">
                         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5">
-                            <img :src="staff.profileScan || 'https://via.placeholder.com/180'" alt="Profile"
+                            <img :src="staff.profileScan || 'https://via.placeholder.com/180'" alt="{{ __('admin.staff_information') }}"
                                 class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg flex-shrink-0" />
                             <div class="text-center sm:text-left text-white">
                                 <h1 class="text-2xl font-bold" x-text="staff.name || 'No name'"></h1>

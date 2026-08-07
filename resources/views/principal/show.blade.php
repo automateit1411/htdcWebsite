@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Principal - Hazera-Taju Degree College')
+
 @section('content')
     <div class="p-4 max-w-5xl mx-auto">
         <a href="{{ url('/principle-list') }}"
-            class="inline-flex items-center gap-1 text-sm text-[#0d3a37] hover:text-green-700 mb-4 font-medium">&larr; Back to Principal
-            List</a>
+            class="inline-flex items-center gap-1 text-sm text-[#0d3a37] hover:text-green-700 mb-4 font-medium">&larr; {{ __('website.back_to_principal_list') }}</a>
 
         <div x-data="{
                 index: '{{ $index }}',
@@ -14,7 +15,7 @@
                 init() {
                     fetch('/proxy/employees/principal')
                         .then(response => {
-                            if (!response.ok) throw new Error('Failed to fetch principal data');
+                            if (!response.ok) throw new Error({{ __('website.failed_fetch_principal') }});
                             return response.json();
                         })
                         .then(data => {
@@ -23,19 +24,19 @@
                                 found = data[parseInt(this.index)];
                             }
                             if (!found) {
-                                this.error = 'Principal not found.';
+                                this.error = {{ __('website.principal_not_found') }};
                             } else {
                                 this.principal = found;
                             }
                         })
-                        .catch(err => this.error = err.message || 'Unable to load principal details')
+                        .catch(err => this.error = err.message || {{ __('website.unable_to_load_principal') }})
                         .finally(() => this.loading = false);
                 }
             }" x-init="init()">
 
             <template x-if="loading">
                 <div class="flex items-center justify-center py-20">
-                    <div class="text-gray-500 text-sm">Loading principal details...</div>
+                    <div class="text-gray-500 text-sm">{{ __('website.loading_principal_details') }}</div>
                 </div>
             </template>
 
@@ -48,10 +49,10 @@
                     {{-- Header --}}
                     <div class="bg-gradient-to-r from-[#0d3a37] to-[#1a6b5a] p-6">
                         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5">
-                            <img :src="principal.profileScan || 'https://via.placeholder.com/180'" alt="Profile"
+                            <img :src="principal.profileScan || 'https://via.placeholder.com/180'" alt="{{ __('website.profile') }}"
                                 class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg flex-shrink-0" />
                             <div class="text-center sm:text-left text-white">
-                                <h1 class="text-2xl font-bold" x-text="principal.name || 'No name'"></h1>
+                                <h1 class="text-2xl font-bold" x-text="principal.name || {{ __('website.no_name') }}"></h1>
                                 <p class="text-sm text-green-200 mt-0.5" x-text="principal.banglaName || ''"></p>
                                 <div class="flex flex-wrap justify-center sm:justify-start gap-2 mt-3">
                                     <span x-show="principal.designation_name"

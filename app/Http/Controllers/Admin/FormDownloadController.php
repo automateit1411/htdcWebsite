@@ -41,7 +41,7 @@ class FormDownloadController extends Controller
             $form->update(['file_path' => $filePath]);
         }
 
-        return redirect()->route('admin.form-downloads.index')->with('success', 'Form created successfully.');
+        return redirect()->route('admin.form-downloads.index')->with('success', __('admin.form_download_created'));
     }
 
     public function edit(FormDownload $formDownload)
@@ -74,7 +74,7 @@ class FormDownloadController extends Controller
             $formDownload->update(['file_path' => $filePath]);
         }
 
-        return redirect()->route('admin.form-downloads.index')->with('success', 'Form updated successfully.');
+        return redirect()->route('admin.form-downloads.index')->with('success', __('admin.form_download_updated'));
     }
 
     public function destroy(FormDownload $formDownload)
@@ -84,6 +84,6 @@ class FormDownloadController extends Controller
         }
         
         $formDownload->delete();
-        return redirect()->route('admin.form-downloads.index')->with('success', 'Form deleted successfully.');
+        return redirect()->route('admin.form-downloads.index')->with('success', __('admin.form_download_deleted'));
     }
 }

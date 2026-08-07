@@ -56,7 +56,7 @@ class DailyAttendanceController extends Controller
         );
 
         return redirect()->route('admin.daily-attendances.index')
-            ->with('success', 'Attendance saved successfully.');
+            ->with('success', __('admin.attendance_saved'));
     }
 
     public function edit(DailyAttendance $dailyAttendance)
@@ -82,14 +82,14 @@ class DailyAttendanceController extends Controller
         ]);
 
         return redirect()->route('admin.daily-attendances.index')
-            ->with('success', 'Attendance updated successfully.');
+            ->with('success', __('admin.attendance_updated'));
     }
 
     public function destroy(DailyAttendance $dailyAttendance)
     {
         $dailyAttendance->delete();
         return redirect()->route('admin.daily-attendances.index')
-            ->with('success', 'Attendance deleted successfully.');
+            ->with('success', __('admin.attendance_deleted'));
     }
 
     public function bulkStore(Request $request)
@@ -116,7 +116,7 @@ class DailyAttendanceController extends Controller
         }
 
         return redirect()->route('admin.daily-attendances.index')
-            ->with('success', 'All attendance records saved successfully.');
+            ->with('success', __('admin.attendance_bulk_saved'));
     }
 
     public function bulkCreate()

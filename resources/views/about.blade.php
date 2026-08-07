@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'About Us - Hazera-Taju Degree College')
+
 @section('content')
     <div class="max-w-7xl mx-auto space-y-1 py-2">
 

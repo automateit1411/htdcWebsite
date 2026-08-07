@@ -11,19 +11,19 @@
             </svg>
         </div>
 
-        <h1 class="text-xl font-bold text-gray-800 mb-1">Bad Request</h1>
-        <h2 class="text-base font-medium text-[#3dab8c] mb-4 bn-font">অনুরোধটি সঠিক নয়</h2>
+        <h1 class="text-xl font-bold text-gray-800 mb-1">{{ __('website.bad_request') }}</h1>
+        <h2 class="text-base font-medium text-[#3dab8c] mb-4 bn-font">অনুরোধটি সঠিক নয়</h2>
 
         <p class="text-gray-600 text-sm mb-2 leading-relaxed">
-            There was a problem processing your request. Please go back to the home page.
+            {{ __('website.bad_request_desc') }}
         </p>
         <p class="text-gray-500 text-xs mb-8 bn-font">
-            আপনার অনুরোধটি প্রক্রিয়া করতে সমস্যা হয়েছে। অনুগ্রহ করে মূল পাতায় ফিরে যান।
+            আপনার অনুরোধটি প্রক্রিয়া করতে সমস্যা হয়েছে। অনুগ্রহ করে মূল পাতায় ফিরে যান।
         </p>
 
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
             <a href="{{ url('/') }}" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#3dab8c] to-[#0d3a37] text-white font-medium px-6 py-2.5 rounded-xl shadow hover:opacity-90 transition-all text-sm">
-                Go to Home / মূল পাতায় ফিরে যান
+                {{ __('website.go_to_home') }}
             </a>
         </div>
     </div>

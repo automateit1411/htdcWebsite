@@ -46,7 +46,7 @@ class SliderController extends Controller
         Slider::create($validated);
 
         return redirect()->route('admin.sliders.index')
-            ->with('success', 'Slider created successfully!');
+            ->with('success', __('admin.slider_created'));
     }
 
     /**
@@ -75,7 +75,7 @@ class SliderController extends Controller
         $slider->update($validated);
 
         return redirect()->route('admin.sliders.index')
-            ->with('success', 'Slider updated successfully!');
+            ->with('success', __('admin.slider_updated'));
     }
 
     /**
@@ -85,7 +85,7 @@ class SliderController extends Controller
     {
         $slider->delete();
         return redirect()->route('admin.sliders.index')
-            ->with('success', 'Slider deleted successfully!');
+            ->with('success', __('admin.slider_deleted'));
     }
 
     /**
@@ -96,6 +96,6 @@ class SliderController extends Controller
         $slider->update(['is_active' => !$slider->is_active]);
         
         return redirect()->back()
-            ->with('success', 'Slider status updated successfully!');
+            ->with('success', __('admin.slider_status_updated'));
     }
 }

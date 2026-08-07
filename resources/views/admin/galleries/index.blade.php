@@ -3,9 +3,9 @@
 @section('content')
 <div class="space-y-6">
     <div class="flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-gray-800">Gallery</h1>
+        <h1 class="text-2xl font-bold text-gray-800">{{ __('admin.gallery') }}</h1>
         <a href="{{ route('admin.galleries.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#3dab8c] hover:bg-[#0d3a37] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3dab8c]">
-            Add Image
+            {{ __('admin.add_image') }}
         </a>
     </div>
 
@@ -16,13 +16,13 @@
                 <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title }}" class="object-cover w-full h-48">
             </div>
             <div class="p-4">
-                <h3 class="text-lg font-medium text-gray-900 truncate">{{ $gallery->title ?: 'Untitled' }}</h3>
+                <h3 class="text-lg font-medium text-gray-900 truncate">{{ $gallery->title ?: __('admin.untitled') }}</h3>
                 <p class="text-sm text-gray-500">{{ $gallery->category }}</p>
                 <div class="mt-4 flex justify-end">
-                    <form action="{{ route('admin.galleries.destroy', $gallery->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                    <form action="{{ route('admin.galleries.destroy', $gallery->id) }}" method="POST" onsubmit="return confirm('{{ __("admin.confirm_delete") }}');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="text-red-600 hover:text-red-900 text-sm font-medium">Delete</button>
+                        <button type="submit" class="text-red-600 hover:text-red-900 text-sm font-medium">{{ __('admin.delete') }}</button>
                     </form>
                 </div>
             </div>

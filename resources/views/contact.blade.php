@@ -1,14 +1,16 @@
 @extends('layouts.app')
 
+@section('title', 'Contact - Hazera-Taju Degree College')
+
 @section('content')
     <div class="max-w-7xl mx-auto py-1">
         <!-- Page Header -->
         <div class="text-center mb-1 bg-white shadow">
             <h1
                 class="text-3xl md:text-4xl font-bold text-gray-900 bg-gradient-to-r from-[#3dab8c] to-[#0d3a37] bg-clip-text text-transparent inline-block">
-                Contact Us
+                {{ __('website.contact_us') }}
             </h1>
-            <p class="text-gray-600 max-w-2xl mx-auto">Get in touch with
+            <p class="text-gray-600 max-w-2xl mx-auto">{{ __('website.get_in_touch') }}
                 {{ $settings->college_name ?? 'Hazera-Taju Degree College' }}
             </p>
         </div>
@@ -59,7 +61,7 @@
                                 </svg>
                             </div>
                             <div class="flex-1">
-                                <h3 class="font-semibold text-gray-900 text-md">Telephone</h3>
+                                <h3 class="font-semibold text-gray-900 text-md">{{ __('website.telephone') }}</h3>
                                 <p class="text-gray-600 font-medium text-sm">{{ $settings->telephone }}</p>
                             </div>
                         </div>
@@ -75,7 +77,7 @@
                                 </svg>
                             </div>
                             <div class="flex-1">
-                                <h3 class="font-semibold text-gray-900 text-md">Cell Phone</h3>
+                                <h3 class="font-semibold text-gray-900 text-md">{{ __('website.cell_phone') }}</h3>
                                 <p class="text-gray-600 font-medium text-sm">{{ $settings->cell_phone }}</p>
                             </div>
                         </div>
@@ -92,7 +94,7 @@
                                 </svg>
                             </div>
                             <div class="flex-1">
-                                <h3 class="font-semibold text-gray-900 text-md">EIIN</h3>
+                                <h3 class="font-semibold text-gray-900 text-md">{{ __('website.eiin') }}</h3>
                                 <p class="text-gray-600 font-medium text-sm">{{ $settings->ein }}</p>
                             </div>
                         </div>
@@ -109,7 +111,7 @@
                                 </svg>
                             </div>
                             <div class="flex-1">
-                                <h3 class="font-semibold text-gray-900 text-md">NU Code</h3>
+                                <h3 class="font-semibold text-gray-900 text-md">{{ __('website.nu_code') }}</h3>
                                 <p class="text-gray-600 font-medium text-sm">{{ $settings->nu_code }}</p>
                             </div>
                         </div>
@@ -126,7 +128,7 @@
                                 </svg>
                             </div>
                             <div class="flex-1">
-                                <h3 class="font-semibold text-gray-900 text-md">E-mail</h3>
+                                <h3 class="font-semibold text-gray-900 text-md">{{ __('website.email') }}</h3>
                                 <a href="mailto:{{ $settings->email }}"
                                     class="text-[#3dab8c] hover:text-[#0d3a37] font-semibold transition-colors">
                                     {{ $settings->email }}
@@ -146,7 +148,7 @@
                                 </svg>
                             </div>
                             <div class="flex-1">
-                                <h3 class="font-semibold text-gray-900 text-md">Website</h3>
+                                <h3 class="font-semibold text-gray-900 text-md">{{ __('website.website') }}</h3>
                                 <a href="{{ $settings->website }}" target="_blank"
                                     class="text-[#3dab8c] hover:text-[#0d3a37] font-semibold transition-colors inline-flex items-center gap-1">
                                     {{ str_replace(['https://', 'http://', 'www.'], '', $settings->website) }}
@@ -170,7 +172,7 @@
                                         <path
                                             d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                                     </svg>
-                                    <span class="font-semibold">Facebook</span>
+                                    <span class="font-semibold">{{ __('website.facebook') }}</span>
                                 </a>
                             @endif
 
@@ -181,7 +183,7 @@
                                         <path
                                             d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                                     </svg>
-                                    <span class="font-semibold">YouTube</span>
+                                    <span class="font-semibold">{{ __('website.youtube') }}</span>
                                 </a>
                             @endif
                         </div>
@@ -201,14 +203,14 @@
                         </svg>
                     </div>
                     <div class="relative z-10">
-                        <h2 class="text-2xl font-bold text-white text-center">Our Location</h2>
+                        <h2 class="text-2xl font-bold text-white text-center">{{ __('website.our_location') }}</h2>
                         <p class="text-white/90 text-center  flex items-center justify-center gap-2">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
                                     d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 6a1 1 0 110 2 1 1 0 010-2z"
                                     clip-rule="evenodd"></path>
                             </svg>
-                            Find us on Google Maps
+                            {{ __('website.find_us_maps') }}
                         </p>
                     </div>
                 </div>
@@ -225,7 +227,7 @@
                     </div>
                 @else
                     <div class="relative w-full h-[550px] bg-gray-100 flex items-center justify-center">
-                        <p class="text-gray-500 text-lg">Google Maps location not configured</p>
+                        <p class="text-gray-500 text-lg">{{ __('website.maps_not_configured') }}</p>
                     </div>
                 @endif
             </div>

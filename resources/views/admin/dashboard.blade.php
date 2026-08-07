@@ -4,8 +4,8 @@
     <div class="space-y-8">
         <!-- Page Header -->
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Dashboard Overview</h1>
-            <p class="mt-1 text-sm text-gray-500">Welcome back, {{ Auth::user()->name }}. Here's what's happening today.</p>
+            <h1 class="text-2xl font-bold text-gray-900">{{ __('admin.dashboard_overview') }}</h1>
+            <p class="mt-1 text-sm text-gray-500">{{ __('admin.welcome_back') }}, {{ Auth::user()->name }}. {{ __('admin.happening_today') }}</p>
         </div>
 
         <!-- Stats Grid -->
@@ -20,12 +20,12 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Students</p>
+                        <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">{{ __('admin.students') }}</p>
                         <p class="text-2xl font-bold text-gray-900">{{ $stats['total_students'] }}</p>
                     </div>
                 </div>
                 <div class="mt-4 flex items-center text-sm text-[#3dab8c] font-medium">
-                    <span>Total Applications</span>
+                    <span>{{ __('admin.total_applications') }}</span>
                 </div>
             </div>
 
@@ -40,12 +40,12 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Teachers</p>
+                        <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">{{ __('admin.teachers') }}</p>
                         <p class="text-2xl font-bold text-gray-900">{{ $stats['total_teachers'] }}</p>
                     </div>
                 </div>
                 <div class="mt-4 flex items-center text-sm text-[#0d3a37] font-medium">
-                    <span>Total Applications</span>
+                    <span>{{ __('admin.total_applications') }}</span>
                 </div>
             </div>
 
@@ -60,26 +60,24 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Notices</p>
+                        <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">{{ __('admin.notices') }}</p>
                         <p class="text-2xl font-bold text-gray-900">{{ $stats['total_notices'] }}</p>
                     </div>
                 </div>
                 <div class="mt-4 flex items-center text-sm text-[#3dab8c] font-medium">
-                    <span>Recent Updates</span>
+                    <span>{{ __('admin.recent_updates') }}</span>
                 </div>
             </div>
         </div>
 
-        <!-- Quick Actions or Recent Activity could go here -->
+        <!-- Quick Actions -->
         <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Links</h3>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ __('admin.quick_links') }}</h3>
             <div class="flex flex-wrap gap-4">
                 <a href="{{ route('admin.notices.create') }}"
-                    class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#3dab8c] hover:bg-[#0d3a37] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3dab8c] whitespace-nowrap">Create
-                    New Notice</a>
+                    class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#3dab8c] hover:bg-[#0d3a37] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3dab8c] whitespace-nowrap">{{ __('admin.create_new_notice') }}</a>
                 <a href="{{ route('admin.galleries.create') }}"
-                    class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-medium">Upload
-                    to Gallery</a>
+                    class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-medium">{{ __('admin.upload_to_gallery') }}</a>
                 <a href="{{ route('admin.sliders.index') }}"
                     class="px-4 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-colors font-medium flex items-center gap-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,7 +85,7 @@
                             d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
                         </path>
                     </svg>
-                    Manage Sliders
+                    {{ __('admin.manage_sliders') }}
                 </a>
                 <a href="{{ route('admin.settings.index') }}"
                     class="px-4 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors font-medium flex items-center gap-2">
@@ -98,7 +96,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
-                    Contact Settings
+                    {{ __('admin.contact_settings') }}
                 </a>
             </div>
         </div>

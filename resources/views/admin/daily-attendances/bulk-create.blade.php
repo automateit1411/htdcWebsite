@@ -3,8 +3,8 @@
 @section('content')
 <div class="space-y-6" x-data="bulkAttendance()">
     <div class="flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-gray-800">Bulk Add Attendance</h1>
-        <a href="{{ route('admin.daily-attendances.index') }}" class="text-gray-500 hover:text-gray-700">Back to List</a>
+        <h1 class="text-2xl font-bold text-gray-800">{{ __('admin.bulk_add_attendance') }}</h1>
+        <a href="{{ route('admin.daily-attendances.index') }}" class="text-gray-500 hover:text-gray-700">{{ __('admin.back_to_list') }}</a>
     </div>
 
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
@@ -13,7 +13,7 @@
 
             <div class="mb-6 flex flex-wrap gap-4 items-end">
                 <div>
-                    <label for="date" class="block text-sm font-medium text-gray-700">Date</label>
+                    <label for="date" class="block text-sm font-medium text-gray-700">{{ __('admin.date') }}</label>
                     <input type="date" name="date" id="date" value="{{ old('date', date('Y-m-d')) }}" class="mt-1 block max-w-xs border-gray-300 rounded-md shadow-sm focus:ring-[#3dab8c] focus:border-[#3dab8c] sm:text-sm" required>
                 </div>
                 <div>
@@ -25,7 +25,7 @@
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        <span x-text="loading ? 'Fetching...' : 'Fetch from Software'"></span>
+                        <span x-text="loading ? '{{ __('admin.fetching') }}' : '{{ __('admin.fetch_from_software') }}'"></span>
                     </button>
                 </div>
             </div>
@@ -38,11 +38,11 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Program</th>
-                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Group</th>
-                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total Students</th>
-                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Present Students</th>
-                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Percentage</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">{{ __('admin.program') }}</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">{{ __('admin.group') }}</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">{{ __('admin.total_students') }}</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">{{ __('admin.present_students') }}</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">{{ __('admin.percentage') }}</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -75,16 +75,16 @@
 
             <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                 <p class="text-sm text-blue-800">
-                    <strong>Note:</strong> Enter the number of total and present students for each group. Percentage and absent count will be calculated automatically.
+                    <strong>{{ __('admin.note') }}</strong> Enter the number of total and present students for each group. Percentage and absent count will be calculated automatically.
                 </p>
             </div>
 
             <div class="flex justify-end gap-3 mt-6">
                 <a href="{{ route('admin.daily-attendances.index') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none">
-                    Cancel
+                    {{ __('admin.cancel') }}
                 </a>
                 <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-[#3dab8c] to-[#0d3a37] hover:from-green-600 hover:to-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3dab8c]">
-                    Save All Attendance
+                    {{ __('admin.save_all_attendance') }}
                 </button>
             </div>
         </form>

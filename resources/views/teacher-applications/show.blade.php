@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Teacher Application - Hazera-Taju Degree College')
+
 @section('content')
 <div class="flex flex-col items-center w-full overflow-x-auto bg-gray-50 min-h-screen py-8">
     <!-- PDF Download Scripts -->
@@ -8,7 +10,7 @@
 
     <div class="mb-4 flex gap-4 no-print">
         <button 
-            class="px-6 py-2 bg-green-700 text-white rounded font-medium shadow hover:bg-green-800 transition-colors"
+            class="px-6 py-2 bg-[#0d3a37] text-white rounded font-medium shadow hover:bg-[rgb(20,89,84)] transition-colors"
             onclick="downloadPdf()"
         >
             Download PDF
@@ -22,11 +24,11 @@
     </div>
 
     <div id="preview-content" class="bg-white shadow-lg min-w-[750px] w-[750px] p-8 relative mx-auto text-black border">
-        <div class="text-center border-b-2 border-green-800 pb-4 mb-4">
-            <h1 class="text-2xl font-bold uppercase text-green-900">Hazera-Taju Degree College</h1>
-            <p class="text-sm font-bold text-green-800">Teacher Recruitment Application</p>
+        <div class="text-center border-b-2 border-[#0d3a37] pb-4 mb-4">
+            <h1 class="text-2xl font-bold uppercase text-[#0d3a37]">Hazera-Taju Degree College</h1>
+            <p class="text-sm font-bold text-[#0d3a37]/80">Teacher Recruitment Application</p>
             <p class="text-xs text-gray-600">Chandgaon, Chattogram</p>
-            <div class="mt-2 inline-block bg-white px-3 py-1 rounded border border-green-800 text-xs font-mono font-bold">
+            <div class="mt-2 inline-block bg-white px-3 py-1 rounded border border-[#0d3a37] text-xs font-mono font-bold">
                 CODE: {{ $application->applicationCode }}
             </div>
         </div>
@@ -55,12 +57,12 @@
                 <tr class="border-t"><th class="text-left px-3 py-2 bg-gray-50">Address</th><td colspan="2" class="px-3 py-2">{{ $application->presentAddress }}, {{ $application->upazilaThana }}, {{ $application->zillaPostOffice }}</td></tr>
                 <tr class="border-t"><th class="text-left px-3 py-2 bg-gray-50">NID Number</th><td colspan="2" class="px-3 py-2">{{ $application->nid }}</td></tr>
                 
-                <tr class="border-t bg-green-50"><th colspan="3" class="px-3 py-2 text-center font-bold text-green-900 uppercase tracking-wider text-xs">Academic & Professional Info</th></tr>
+                <tr class="border-t bg-[#0d3a37]/5"><th colspan="3" class="px-3 py-2 text-center font-bold text-[#0d3a37] uppercase tracking-wider text-xs">Academic & Professional Info</th></tr>
                 <tr class="border-t"><th class="text-left px-3 py-2 bg-gray-50">SSC Board / Year</th><td colspan="2" class="px-3 py-2">{{ $application->sscBoard }} / {{ $application->sscYear }}</td></tr>
                 <tr class="border-t"><th class="text-left px-3 py-2 bg-gray-50">SSC Result</th><td colspan="2" class="px-3 py-2">{{ $application->sscResult }}</td></tr>
                 <tr class="border-t"><th class="text-left px-3 py-2 bg-gray-50">Graduation Subject</th><td colspan="2" class="px-3 py-2">{{ $application->graduationSubject }}</td></tr>
                 <tr class="border-t"><th class="text-left px-3 py-2 bg-gray-50">Graduation Result</th><td colspan="2" class="px-3 py-2">{{ $application->graduationResult }}</td></tr>
-                <tr class="border-t"><th class="text-left px-3 py-2 bg-gray-50">Recruitment Subject</th><td colspan="2" class="px-3 py-2 font-bold text-green-800">{{ $application->subject }}</td></tr>
+                <tr class="border-t"><th class="text-left px-3 py-2 bg-gray-50">Recruitment Subject</th><td colspan="2" class="px-3 py-2 font-bold text-[#0d3a37]/80">{{ $application->subject }}</td></tr>
             </tbody>
         </table>
 

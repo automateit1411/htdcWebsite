@@ -80,7 +80,7 @@ class SuperAdminAuthController extends Controller
         ]);
 
         if (!$email) {
-            return redirect()->route('super-admin.login')->with('error', 'Session expired. Please login again.');
+            return redirect()->route('super-admin.login')->with('error', __('admin.session_expired'));
         }
 
         try {

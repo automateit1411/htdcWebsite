@@ -157,7 +157,7 @@ class PageController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(10);
         
-        $pageTitle = 'Form Downloads';
+        $pageTitle = __('website.page_form_downloads');
         return view('notices', compact('notices', 'pageTitle'));
     }
 
@@ -167,7 +167,7 @@ class PageController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(10);
         
-        $pageTitle = 'Teacher Vacant Posts';
+        $pageTitle = __('website.page_teacher_vacant_posts');
         return view('notices', compact('notices', 'pageTitle'));
     }
 
@@ -177,7 +177,7 @@ class PageController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(10);
         
-        $pageTitle = 'Staff Vacant Posts';
+        $pageTitle = __('website.page_staff_vacant_posts');
         return view('notices', compact('notices', 'pageTitle'));
     }
 
@@ -271,6 +271,17 @@ class PageController extends Controller
     }
 
     /**
+     * Display student details page
+     */
+    public function studentDetails()
+    {
+        $response = $this->apiService->getStudentStatistics();
+        $studentStats = $response['statistics'] ?? $response ?? [];
+        $hasError = isset($response['error']);
+        return view('student-details', compact('studentStats', 'hasError'));
+    }
+
+    /**
      * Display feedback page
      */
     public function feedback()
@@ -307,10 +318,10 @@ class PageController extends Controller
                     ->subject('Website Feedback: ' . $validated['subject']);
             });
 
-            return back()->with('success', 'Thank you for your feedback! It has been sent successfully.');
+            return back()->with('success', __('website.feedback_success'));
         } catch (\Exception $e) {
             \Log::error('Feedback email failed: ' . $e->getMessage());
-            return back()->with('error', 'Failed to send email. Please try again later.');
+            return back()->with('error', __('website.feedback_error'));
         }
     }
 
@@ -357,27 +368,27 @@ class PageController extends Controller
             if ($slug === 'bou') {
                 $setting = \App\Models\Setting::first();
                 $page = (object)[
-                    'title' => $setting?->bou_body ?? 'Board of Trustees',
-                    'description' => $setting?->bou_description ?? 'The Board of Trustees is the governing body responsible for overseeing the administration and strategic direction of the institution.',
+                    'title' => $setting?->bou_body ?? __('website.page_bou'),
+                    'description' => $setting?->bou_description ?? __('website.page_bou_desc'),
                     'image_path' => null,
                     'file_path' => null,
                     'page_name' => 'BOU',
                 ];
             } elseif ($slug === 'about') {
                 $page = (object)[
-                    'title' => 'About Hazera-Taju Degree College',
-                    'description' => 'Hazera-Taju Degree College is committed to quality education and student development.',
+                    'title' => __('website.page_about'),
+                    'description' => __('website.page_about_desc'),
                     'image_path' => null,
                     'file_path' => null,
-                    'page_name' => 'About Us',
+                    'page_name' => __('website.page_about_us'),
                 ];
             } elseif ($slug === 'at-a-glance') {
                 $page = (object)[
-                    'title' => 'At a Glance',
-                    'description' => 'Information about Hazera-Taju Degree College at a glance.',
+                    'title' => __('website.page_at_a_glance'),
+                    'description' => __('website.page_at_a_glance_desc'),
                     'image_path' => null,
                     'file_path' => null,
-                    'page_name' => 'At a Glance',
+                    'page_name' => __('website.page_at_a_glance'),
                 ];
             } else {
                 abort(404);

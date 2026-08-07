@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Online Admission - Hazera-Taju Degree College')
+
 @section('content')
     <div class="mx-auto max-w-5xl" x-data="multiStepForm()">
         <!-- PDF Download Scripts (jsPDF + Bornomala font) -->
@@ -7,7 +9,7 @@
         <script src="{{ asset('js/studentapplicationPdf.js') }}"></script>
 
         <div class="rounded-lg shadow border border-gray-200 bg-white">
-            <div class="px-4 py-2 bg-[#14532d] text-white font-semibold text-center flex items-center justify-center">
+            <div class="px-4 py-2 bg-[#0d3a37] text-white font-semibold text-center flex items-center justify-center">
                 <img src="{{ asset('icons/applicationform.svg') }}" alt="Application Form"
                     class="inline-block w-8 h-8 mr-2 p-1" />
                 Application
@@ -43,9 +45,9 @@
                         <!-- Step 1: Program Session & Group -->
                         <div x-show="currentStep === 1" class="relative mt-3" x-cloak>
                             <div
-                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-3/4 ">
+                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-3/4 ">
                                 Step 1: Select Program Session & Group</div>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border border-green-700 p-6 pt-8">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border border-[rgb(20,89,84)] p-6 pt-8">
                                 <div>
                                     <label class="text-sm font-medium">Program <span class="text-red-600">*</span></label>
                                     <select name="program" class="mt-1 w-full border rounded px-3 py-2"
@@ -92,9 +94,9 @@
                         <!-- Step 2: Terms and Conditions -->
                         <div x-show="currentStep === 2" class="relative mt-3" x-cloak>
                             <div
-                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-3/4 ">
+                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-3/4 ">
                                 Step 2: Terms and Conditions</div>
-                            <div class="border border-green-700 text-gray-700 p-6 pt-8">
+                            <div class="border border-[rgb(20,89,84)] text-gray-700 p-6 pt-8">
                                 <!-- Terms Image from selected program -->
                                 <template
                                     x-if="selectedProgram && (selectedProgram.termsImage || selectedProgram.termimage)">
@@ -115,9 +117,9 @@
                         <!-- Step 3: Personal Information -->
                         <div x-show="currentStep === 3" class="relative mt-3" x-cloak>
                             <div
-                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-3/4 ">
+                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-3/4 ">
                                 Step 3: Personal Information</div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-green-700 p-6 pt-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-[rgb(20,89,84)] p-6 pt-8">
                                 <div>
                                     <label class="text-sm font-medium">Student Name (English) <span
                                             class="text-red-600">*</span></label>
@@ -240,15 +242,15 @@
                         <!-- Step 4: Father and Mother Information -->
                         <div x-show="currentStep === 4" class="relative mt-3" x-cloak>
                             <div
-                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-3/4 ">
+                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-3/4 ">
                                 Step 4: Father and Mother Information</div>
-                            <div class="border border-green-700 p-6 pt-8">
+                            <div class="border border-[rgb(20,89,84)] p-6 pt-8">
                                 <!-- Father -->
                                 <div class="relative mt-4">
                                     <div
-                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-1/2 ">
+                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-1/2 ">
                                         Father Information</div>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-green-700 p-6 pt-8">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-[rgb(20,89,84)] p-6 pt-8">
                                         <div>
                                             <label class="text-sm font-medium">Name<span
                                                     class="text-red-600">*</span></label>
@@ -301,9 +303,9 @@
                                 <!-- Mother -->
                                 <div class="relative mt-8">
                                     <div
-                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-1/2 ">
+                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-1/2 ">
                                         Mother Information</div>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-green-700 p-6 pt-8">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-[rgb(20,89,84)] p-6 pt-8">
                                         <div>
                                             <label class="text-sm font-medium">Name<span
                                                     class="text-red-600">*</span></label>
@@ -358,15 +360,15 @@
                         <!-- Step 5: Address Information -->
                         <div x-show="currentStep === 5" class="relative mt-3" x-cloak>
                             <div
-                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-3/4 ">
+                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-3/4 ">
                                 Step 5: Address Information</div>
-                            <div class="border border-green-700 p-6 pt-8">
+                            <div class="border border-[rgb(20,89,84)] p-6 pt-8">
                                 <!-- Present -->
                                 <div class="relative mt-4">
                                     <div
-                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-1/2 ">
+                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-1/2 ">
                                         Present Address</div>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-green-700 p-6 pt-8">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-[rgb(20,89,84)] p-6 pt-8">
                                         <div>
                                             <label class="text-sm font-medium">Village/Block/Area <span
                                                     class="text-red-600">*</span></label>
@@ -404,15 +406,15 @@
                                 </div>
                                 <div class="mt-4">
                                     <button type="button"
-                                        class="px-4 py-2 rounded border border-green-900 text-green-900 hover:bg-green-50 text-sm"
+                                        class="px-4 py-2 rounded border border-[#0d3a37] text-[#0d3a37] hover:bg-[#0d3a37] hover:text-white text-sm"
                                         x-on:click="copyAddress()">Same as Permanent Address</button>
                                 </div>
                                 <!-- Permanent -->
                                 <div class="relative mt-8">
                                     <div
-                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-1/2 ">
+                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-1/2 ">
                                         Permanent Address</div>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-green-700 p-6 pt-8">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-[rgb(20,89,84)] p-6 pt-8">
                                         <div>
                                             <label class="text-sm font-medium">Village/Block/Area <span
                                                     class="text-red-600">*</span></label>
@@ -454,15 +456,15 @@
                         <!-- Step 6: Guardian & Reference Information -->
                         <div x-show="currentStep === 6" class="relative mt-3" x-cloak>
                             <div
-                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-3/4 ">
+                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-3/4 ">
                                 Step 6: Guardian & Reference Information</div>
-                            <div class="border border-green-700 p-6 pt-8">
+                            <div class="border border-[rgb(20,89,84)] p-6 pt-8">
                                 <!-- Guardian -->
                                 <div class="relative mt-4">
                                     <div
-                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-1/2 ">
+                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-1/2 ">
                                         Guardian Information</div>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-green-700 p-6 pt-8">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-[rgb(20,89,84)] p-6 pt-8">
                                         <div>
                                             <label class="text-sm font-medium">Relation <span
                                                     class="text-red-600">*</span></label>
@@ -514,9 +516,9 @@
                                 <!-- Reference -->
                                 <div class="relative mt-8">
                                     <div
-                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-1/2 ">
+                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-1/2 ">
                                         Reference Information</div>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-green-700 p-6 pt-8">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-[rgb(20,89,84)] p-6 pt-8">
                                         <div>
                                             <label class="text-sm font-medium">Name</label>
                                             <input name="refName"
@@ -549,15 +551,15 @@
                         <!-- Step 7: Education Information -->
                         <div x-show="currentStep === 7" class="relative mt-3" x-cloak>
                             <div
-                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-3/4 ">
+                                class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-3/4 ">
                                 Step 7: Education Information</div>
-                            <div class="border border-green-700 p-6 pt-8">
+                            <div class="border border-[rgb(20,89,84)] p-6 pt-8">
                                 <!-- SSC -->
                                 <div class="relative mt-4">
                                     <div
-                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-1/2 ">
+                                        class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-1/2 ">
                                         SSC/Equivalent Information</div>
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border border-green-700 p-6 pt-8">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border border-[rgb(20,89,84)] p-6 pt-8">
                                         <div>
                                             <label class="text-sm font-medium">SSC Board <span
                                                     class="text-red-600">*</span></label>
@@ -626,9 +628,9 @@
                                     x-if="selectedProgram && (selectedProgram.hscStatus == 1 || selectedProgram.hscStatus === true)">
                                     <div class="relative mt-8">
                                         <div
-                                            class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-1/2 ">
+                                            class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-1/2 ">
                                             HSC Information</div>
-                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border border-green-700 p-6 pt-8">
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border border-[rgb(20,89,84)] p-6 pt-8">
                                             <div>
                                                 <label class="text-sm font-medium">HSC Board <span
                                                         class="text-red-600">*</span></label>
@@ -699,9 +701,9 @@
                                     x-if="selectedProgram && (selectedProgram.hscStatus == 0 || selectedProgram.hscStatus === false)">
                                     <div class="relative mt-8">
                                         <div
-                                            class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-green-700 p-1 w-1/2 ">
+                                            class="absolute top-[-12px] left-4 text-sm font-semibold text-gray-100 bg-[rgb(20,89,84)] p-1 w-1/2 ">
                                             Registered Subjects</div>
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-green-700 p-4 p-6">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-[rgb(20,89,84)] p-4 p-6">
                                             <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
                                                 <div>
                                                     <label class="text-sm font-medium">Compulsory 1</label>
@@ -842,7 +844,7 @@
                                 Step 8: Final Preview & Submission</div>
 
 
-                            <div class="border-2 border-green-800 rounded-lg bg-gray-50/50  md:p-1  overflow-x-auto shadow-xl mb-2"
+                            <div class="border-2 border-[#0d3a37] rounded-lg bg-gray-50/50  md:p-1  overflow-x-auto shadow-xl mb-2"
                                 style="font-size: 12px;">
                                 <!-- THE FORM FOR PDF (printable-form) -->
                                 <div id="preview-content"
@@ -1195,11 +1197,11 @@
                             </div>
                             <!-- Final Action (Combined Submit & Download) -->
                             <div
-                                class="mt-8 flex flex-col items-center gap-4 no-print py-6 bg-green-50 rounded-xl border-2 border-green-200 shadow-inner">
-                                <p class="text-green-800 font-bold text-center px-4">If the preview looks correct, please
+                                class="mt-8 flex flex-col items-center gap-4 no-print py-6 bg-[#0d3a37]/5 rounded-xl border-2 border-[#0d3a37]/20 shadow-inner">
+                                <p class="text-[#0d3a37] font-bold text-center px-4">If the preview looks correct, please
                                     click below to finalize your application.</p>
                                 <button type="button"
-                                    class="px-12 py-4 bg-[#14532d] text-white rounded-full shadow-2xl hover:bg-green-800 flex items-center gap-3 font-black text-xl transform transition hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    class="px-12 py-4 bg-[#0d3a37] text-white rounded-full shadow-2xl hover:bg-[rgb(20,89,84)] flex items-center gap-3 font-black text-xl transform transition hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                                     x-on:click="submitAndDownload()" :disabled="submitting">
                                     <template x-if="!submitting">
                                         <div class="flex items-center gap-3">
@@ -1225,7 +1227,7 @@
                                         </div>
                                     </template>
                                 </button>
-                                <p class="text-xs text-green-600 italic">This will securely submit your data and
+                                <p class="text-xs text-[#0d3a37]/70 italic">This will securely submit your data and
                                     automatically start your download.</p>
                             </div>
                         </div>
@@ -1237,13 +1239,10 @@
                             <button type="button" x-show="currentStep > 1 && currentStep < 8"
                                 class="px-6 py-2 rounded-lg border border-gray-300 text-gray-700 bg-white shadow-sm hover:bg-gray-100 font-medium transition"
                                 @click="prevStep()">Previous</button>
-                            <button type="button" x-show="currentStep === 8"
-                                class="px-6 py-2 rounded-lg border-2 border-green-300 text-green-700 bg-white shadow-sm hover:bg-green-50 font-bold transition"
-                                @click="prevStep()">Edit Form</button>
                         </div>
                         <div class="ml-auto flex gap-2">
                             <button type="button" x-show="currentStep < 8"
-                                class="px-10 py-2 rounded-lg bg-green-600 text-white shadow-md hover:bg-green-700 font-bold transition transform hover:scale-105"
+                                class="px-10 py-2 rounded-lg bg-[#0d3a37] text-white shadow-md hover:bg-[rgb(20,89,84)] font-bold transition transform hover:scale-105"
                                 @click="nextStep()">Next</button>
                         </div>
                     </div>
@@ -1681,28 +1680,23 @@
 
                         if (!response.ok) {
                             const errorData = await response.json();
+                            // Handle duplicate application (409)
+                            if (response.status === 409 && errorData.pinCode) {
+                                alert('You have already applied! Your PIN: ' + errorData.pinCode);
+                                window.location.href = '/applications/' + errorData.application_id;
+                                return;
+                            }
                             throw new Error(errorData.message || 'Submission failed');
                         }
 
                         const result = await response.json();
-                        console.log('Submission successful:', result);
+                        console.log('Application queued successfully:', result);
 
-                        // Update local PIN code from server response
-                        if (result.pinCode) {
-                            this.formData.pinCode = result.pinCode;
-                        }
+                        // 3. Success handling - queued application
+                        alert('Success! Your application has been submitted and is being processed. You will receive your PIN shortly.');
 
-                        // 3. Trigger PDF Download
-                        console.log('Generating PDF...');
-                        // Wait a bit for the PIN code to render in DOM
-                        await this.$nextTick();
-                        await this.downloadPdf();
-
-                        // 4. Success handling
-                        alert('Success! Your application has been submitted and the PDF is downloading.');
-
-                        // Reset/Refresh page as requested
-                        window.location.href = window.location.pathname; // Redirects to the same page (apply)
+                        // Reset/Refresh page
+                        window.location.href = window.location.pathname;
 
                     } catch (error) {
                         console.error('Submission Error:', error);

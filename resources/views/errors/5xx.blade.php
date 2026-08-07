@@ -11,11 +11,11 @@
             </svg>
         </div>
 
-        <h1 class="text-xl font-bold text-gray-800 mb-1">Server Error</h1>
+        <h1 class="text-xl font-bold text-gray-800 mb-1">{{ __('website.server_error_title') }}</h1>
         <h2 class="text-base font-medium text-red-600 mb-4 bn-font">সার্ভার ত্রুটি</h2>
 
         <p class="text-gray-600 text-sm mb-2 leading-relaxed">
-            An unexpected error occurred on the server. Please try refreshing the page.
+            {{ __('website.server_error_page_desc') }}
         </p>
         <p class="text-gray-500 text-xs mb-8 bn-font">
             সার্ভারে একটি অপ্রত্যাশিত ত্রুটি ঘটেছে। অনুগ্রহ করে পেজটি রিফ্রেশ করুন।
@@ -23,10 +23,10 @@
 
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
             <button onclick="window.location.reload()" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#3dab8c] to-[#0d3a37] text-white font-medium px-5 py-2.5 rounded-xl shadow hover:opacity-90 transition-all text-sm">
-                Reload / রিফ্রেশ করুন
+                {{ __('website.reload') }}
             </button>
             <a href="{{ url('/') }}" class="inline-flex items-center justify-center gap-2 bg-gray-100 text-gray-700 font-medium px-5 py-2.5 rounded-xl border border-gray-200 hover:bg-gray-200 transition-all text-sm">
-                Go to Home / মূল পাতা
+                {{ __('website.go_to_home') }}
             </a>
         </div>
     </div>

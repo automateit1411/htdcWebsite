@@ -44,7 +44,7 @@ class ApplicationController extends Controller
         }
 
         $application->delete();
-        return redirect()->back()->with('success', 'Application deleted successfully.');
+        return redirect()->back()->with('success', __('admin.application_deleted'));
     }
 
     public function bulkDestroy(Request $request)
@@ -64,6 +64,6 @@ class ApplicationController extends Controller
 
         Application::whereIn('id', $request->ids)->delete();
 
-        return redirect()->back()->with('success', count($request->ids) . ' applications deleted successfully.');
+        return redirect()->back()->with('success', __('admin.applications_bulk_deleted', ['count' => count($request->ids)]));
     }
 }

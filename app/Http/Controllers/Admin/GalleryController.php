@@ -42,11 +42,11 @@ class GalleryController extends Controller
             return response()->json([
                 'success' => true,
                 'galleryId' => $gallery->id,
-                'message' => 'Image uploaded successfully.'
+                'message' => __('admin.image_uploaded')
             ]);
         }
 
-        return redirect()->route('admin.galleries.index')->with('success', 'Image uploaded successfully.');
+        return redirect()->route('admin.galleries.index')->with('success', __('admin.image_uploaded'));
     }
 
     public function destroy(Gallery $gallery)
@@ -55,6 +55,6 @@ class GalleryController extends Controller
             Storage::disk('public')->delete($gallery->image);
         }
         $gallery->delete();
-        return redirect()->route('admin.galleries.index')->with('success', 'Image deleted successfully.');
+        return redirect()->route('admin.galleries.index')->with('success', __('admin.image_deleted'));
     }
 }

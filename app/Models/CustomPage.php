@@ -11,12 +11,17 @@ class CustomPage extends Model
 
     protected $fillable = [
         'page_name',
+        'page_name_bn',
         'category',
+        'category_bn',
         'subcategory',
+        'subcategory_bn',
         'title',
+        'title_bn',
         'file_path',
         'image_path',
         'description',
+        'description_bn',
         'route',
         'status',
     ];

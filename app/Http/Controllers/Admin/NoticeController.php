@@ -42,7 +42,7 @@ class NoticeController extends Controller
             $notice->update(['file_path' => $filePath]);
         }
 
-        return redirect()->route('admin.notices.index')->with('success', 'Notice created successfully.');
+        return redirect()->route('admin.notices.index')->with('success', __('admin.notice_created'));
     }
 
     public function edit(Notice $notice)
@@ -76,7 +76,7 @@ class NoticeController extends Controller
             $notice->update(['file_path' => $filePath]);
         }
 
-        return redirect()->route('admin.notices.index')->with('success', 'Notice updated successfully.');
+        return redirect()->route('admin.notices.index')->with('success', __('admin.notice_updated'));
     }
 
     public function destroy(Notice $notice)
@@ -86,6 +86,6 @@ class NoticeController extends Controller
         }
         
         $notice->delete();
-        return redirect()->route('admin.notices.index')->with('success', 'Notice deleted successfully.');
+        return redirect()->route('admin.notices.index')->with('success', __('admin.notice_deleted'));
     }
 }

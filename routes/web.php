@@ -18,6 +18,7 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/language/{locale}', [\App\Http\Controllers\LanguageController::class, 'switch'])->name('language.switch');
 Route::get('/founder', [PageController::class, 'founder'])->name('founder');
 Route::get('/principal', [PageController::class, 'principal'])->name('principal');
 Route::get('/principle-list', [PageController::class, 'principalList'])->name('principal.list');
@@ -36,6 +37,7 @@ Route::get('/teacher-information', [PageController::class, 'teacherInformation']
 Route::get('/teacher-information/{index}', [PageController::class, 'teacherInformationDetail'])->name('teacher.information.detail');
 Route::get('/teachers-panel', [PageController::class, 'teacherPanel'])->name('teacher.panel');
 Route::get('/daily-attendance', [PageController::class, 'attendance'])->name('attendance');
+Route::get('/student-details', [PageController::class, 'studentDetails'])->name('student.details');
 Route::get('/feedback', [PageController::class, 'feedback'])->name('feedback');
 Route::post('/feedback', [PageController::class, 'sendFeedback'])->name('feedback.send');
 Route::get('/useful-links', [PageController::class, 'usefulLinks'])->name('useful-links');
@@ -54,44 +56,48 @@ Route::get('/accounts/login/employee', [PageController::class, 'employeeLogin'])
 
 // Student Application Routes
 Route::get('/apply', [StudentApplicationController::class, 'create'])->name('apply');
-Route::post('/apply', [StudentApplicationController::class, 'store'])->name('applications.store');
+Route::post('/apply', [StudentApplicationController::class, 'store'])->name('applications.store')->middleware('throttle:application-submit');
 Route::get('/applications/{application}', [StudentApplicationController::class, 'show'])->name('applications.show');
 Route::get('/applications/{application}/download', [StudentApplicationController::class, 'download'])->name('applications.download');
 
-// API Proxy Routes to avoid CORS
-Route::get('/proxy/groups/{programId}', [StudentApplicationController::class, 'proxyGroups']);
-Route::get('/proxy/subjects/{programId}/{groupId}', [StudentApplicationController::class, 'proxySubjects']);
-Route::get('/proxy/employees/{type}', [PageController::class, 'proxyEmployees']);
+// API Proxy Routes to avoid CORS (rate limited)
+Route::get('/proxy/groups/{programId}', [StudentApplicationController::class, 'proxyGroups'])->middleware('throttle:proxy-api');
+Route::get('/proxy/subjects/{programId}/{groupId}', [StudentApplicationController::class, 'proxySubjects'])->middleware('throttle:proxy-api');
+Route::get('/proxy/employees/{type}', [PageController::class, 'proxyEmployees'])->middleware('throttle:proxy-api');
 
-// Admission API Proxy Routes
+// Admission API Proxy Routes (rate limited)
 Route::get('/proxy/programs', function () {
     $data = app(\App\Services\ExternalApiService::class)->getPrograms();
     return response()->json($data);
-});
+})->middleware('throttle:proxy-api');
 Route::get('/proxy/sessions', function () {
     $data = app(\App\Services\ExternalApiService::class)->getAdmissionSessions();
     return response()->json($data);
-});
+})->middleware('throttle:proxy-api');
 Route::get('/proxy/occupations', function () {
     $data = app(\App\Services\ExternalApiService::class)->getOccupations();
     return response()->json($data);
-});
+})->middleware('throttle:proxy-api');
 Route::get('/proxy/qualifications', function () {
     $data = app(\App\Services\ExternalApiService::class)->getQualifications();
     return response()->json($data);
-});
+})->middleware('throttle:proxy-api');
 Route::get('/proxy/districts', function () {
     $data = app(\App\Services\ExternalApiService::class)->getDistricts();
     return response()->json($data);
-});
+})->middleware('throttle:proxy-api');
 Route::get('/proxy/boards', function () {
     $data = app(\App\Services\ExternalApiService::class)->getBoards();
     return response()->json($data);
-});
+})->middleware('throttle:proxy-api');
 Route::get('/proxy/constants', function () {
     $data = app(\App\Services\ExternalApiService::class)->getConstants();
     return response()->json($data);
-});
+})->middleware('throttle:proxy-api');
+Route::get('/proxy/student-statistics', function () {
+    $data = app(\App\Services\ExternalApiService::class)->getStudentStatistics();
+    return response()->json($data);
+})->middleware('throttle:proxy-api');
 
 // Teacher Application Routes
 Route::get('/teacher/apply', [TeacherApplicationController::class, 'create'])->name('teacher.apply');

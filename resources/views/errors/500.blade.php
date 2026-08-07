@@ -14,11 +14,11 @@
         </div>
 
         <div class="text-4xl font-black text-gray-800 mb-1">500</div>
-        <h1 class="text-xl font-bold text-gray-800 mb-1">Internal Server Error</h1>
+        <h1 class="text-xl font-bold text-gray-800 mb-1">{{ __('website.internal_server_error') }}</h1>
         <h2 class="text-base font-medium text-red-600 mb-4 bn-font">অভ্যন্তরীণ সার্ভার ত্রুটি</h2>
 
         <p class="text-gray-600 text-sm mb-2 leading-relaxed">
-            Something went wrong on our end. Please try refreshing the page or try again later.
+            {{ __('website.server_error_desc') }}
         </p>
         <p class="text-gray-500 text-xs mb-8 bn-font">
             সার্ভারে একটি সাময়িক সমস্যা হয়েছে। অনুগ্রহ করে পেজটি রিফ্রেশ করুন অথবা কিছু সময় পর আবার চেষ্টা করুন।
@@ -29,10 +29,10 @@
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                 </svg>
-                Reload / রিফ্রেশ করুন
+                {{ __('website.reload') }}
             </button>
             <a href="{{ url('/') }}" class="inline-flex items-center justify-center gap-2 bg-gray-100 text-gray-700 font-medium px-5 py-2.5 rounded-xl border border-gray-200 hover:bg-gray-200 transition-all text-sm">
-                Go to Home / মূল পাতা
+                {{ __('website.go_to_home') }}
             </a>
         </div>
     </div>

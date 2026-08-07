@@ -53,7 +53,7 @@ class VisitorController extends Controller
             ['reason'     => $request->reason]
         );
 
-        return back()->with('success', "IP {$request->ip_address} has been blocked.");
+        return back()->with('success', __('admin.ip_blocked', ['ip' => $request->ip_address]));
     }
 
     /**
@@ -65,7 +65,7 @@ class VisitorController extends Controller
         $ip = $blocked->ip_address;
         $blocked->delete();
 
-        return back()->with('success', "IP {$ip} has been unblocked.");
+        return back()->with('success', __('admin.ip_unblocked', ['ip' => $ip]));
     }
 
     /**
@@ -74,6 +74,6 @@ class VisitorController extends Controller
     public function reset()
     {
         Visitor::truncate();
-        return back()->with('success', 'All visitor records have been reset.');
+        return back()->with('success', __('admin.visitors_reset'));
     }
 }

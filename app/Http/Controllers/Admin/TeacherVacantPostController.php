@@ -41,7 +41,7 @@ class TeacherVacantPostController extends Controller
             $post->update(['file_path' => $filePath]);
         }
 
-        return redirect()->route('admin.teacher-vacant-posts.index')->with('success', 'Teacher vacant post created successfully.');
+        return redirect()->route('admin.teacher-vacant-posts.index')->with('success', __('admin.teacher_vacant_post_created'));
     }
 
     public function edit(TeacherVacantPost $teacherVacantPost)
@@ -74,7 +74,7 @@ class TeacherVacantPostController extends Controller
             $teacherVacantPost->update(['file_path' => $filePath]);
         }
 
-        return redirect()->route('admin.teacher-vacant-posts.index')->with('success', 'Teacher vacant post updated successfully.');
+        return redirect()->route('admin.teacher-vacant-posts.index')->with('success', __('admin.teacher_vacant_post_updated'));
     }
 
     public function destroy(TeacherVacantPost $teacherVacantPost)
@@ -84,6 +84,6 @@ class TeacherVacantPostController extends Controller
         }
         
         $teacherVacantPost->delete();
-        return redirect()->route('admin.teacher-vacant-posts.index')->with('success', 'Teacher vacant post deleted successfully.');
+        return redirect()->route('admin.teacher-vacant-posts.index')->with('success', __('admin.teacher_vacant_post_deleted'));
     }
 }

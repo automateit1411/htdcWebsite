@@ -4,16 +4,16 @@
 <div class="space-y-6" x-data="{ search: '', selected: [], selectAll: false }">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto">
-            <h1 class="text-2xl font-bold text-gray-800">Student Applications</h1>
+            <h1 class="text-2xl font-bold text-gray-800">{{ __('admin.student_applications') }}</h1>
             <form method="GET" action="{{ route('admin.applications.index') }}" class="flex gap-2" id="filter-form">
                 <select name="program" class="rounded-md border-gray-300 text-sm shadow-sm focus:border-[#3dab8c] focus:ring-[#3dab8c]" onchange="document.getElementById('filter-form').submit()">
-                    <option value="">All Programs</option>
+                    <option value="">{{ __('admin.all_programs') }}</option>
                     @foreach($options['programs'] as $p)
                         <option value="{{ $p['id'] }}" {{ request('program') == $p['id'] ? 'selected' : '' }}>{{ $p['name'] ?? $p['id'] }}</option>
                     @endforeach
                 </select>
                 <select name="session" class="rounded-md border-gray-300 text-sm shadow-sm focus:border-[#3dab8c] focus:ring-[#3dab8c]" onchange="document.getElementById('filter-form').submit()">
-                    <option value="">All Sessions</option>
+                    <option value="">{{ __('admin.all_sessions') }}</option>
                     @foreach($options['sessions'] as $s)
                         <option value="{{ $s['id'] ?? $s }}" {{ request('session') == ($s['id'] ?? $s) ? 'selected' : '' }}>{{ $s['session'] ?? ($s['name'] ?? $s) }}</option>
                     @endforeach
@@ -25,11 +25,11 @@
         <div class="flex gap-2 w-full md:w-auto md:max-w-md lg:ml-auto">
             <template x-if="selected.length > 0">
                 <button type="submit" form="bulk-delete-form" class="bg-red-600 text-white px-4 py-2 rounded-md shadow focus:outline-none hover:bg-red-700 font-semibold text-sm flex-shrink-0 transition-opacity" onclick="return confirm('Are you sure you want to delete the selected applications? This cannot be undone.')">
-                    Delete (<span x-text="selected.length"></span>)
+                    {{ __('admin.delete') }} (<span x-text="selected.length"></span>)
                 </button>
             </template>
             <div class="relative flex-1">
-                <input type="text" x-model="search" placeholder="Search by name or mobile..." class="w-full pl-10 pr-4 py-2 rounded-md border-gray-300 shadow-sm focus:border-[#3dab8c] focus:ring focus:ring-[#3dab8c] focus:ring-opacity-50 text-sm">
+                <input type="text" x-model="search" placeholder="{{ __('admin.search_by_name_mobile') }}" class="w-full pl-10 pr-4 py-2 rounded-md border-gray-300 shadow-sm focus:border-[#3dab8c] focus:ring focus:ring-[#3dab8c] focus:ring-opacity-50 text-sm">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
@@ -49,15 +49,15 @@
                         <th scope="col" class="px-4 py-3 text-left">
                             <input type="checkbox" x-model="selectAll" @change="selected = selectAll ? {{ json_encode($applications->pluck('id')) }} : []" class="rounded text-[#3dab8c] focus:ring-[#3dab8c] cursor-pointer">
                         </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pincode</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student Name</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Program</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Session</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mobile</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created Date</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('admin.image') }}</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('admin.pincode') }}</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('admin.student_name') }}</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('admin.program') }}</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('admin.session') }}</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('admin.mobile') }}</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('admin.status') }}</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('admin.created_date') }}</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('admin.action') }}</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -86,19 +86,19 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             @if($application->status == 0)
-                                <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                                <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">{{ __('admin.pending') }}</span>
                             @else
-                                <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Proceed Done</span>
+                                <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{{ __('admin.proceed_done') }}</span>
                             @endif
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {{ $application->created_at->format('M d, Y') }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <form action="{{ route('admin.applications.destroy', $application->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Delete this application?')">
+                            <form action="{{ route('admin.applications.destroy', $application->id) }}" method="POST" class="inline-block" onsubmit="return confirm('{{ __('admin.delete_application') }}')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
+                                <button type="submit" class="text-red-600 hover:text-red-900 ml-2">{{ __('admin.delete') }}</button>
                             </form>
                         </td>
                     </tr>

@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
+@section('title', 'Results - Hazera-Taju Degree College')
+
 @section('content')
 <div class="container mx-auto px-4 py-12">
     <div class="max-w-2xl mx-auto">
         <!-- Header Section -->
         <div class="text-center mb-10">
-            <h1 class="text-3xl md:text-4xl font-bold text-[#0d3a37] mb-2">Student Result Search</h1>
-            <p class="text-gray-600">Enter your credentials below to view your academic results.</p>
+            <h1 class="text-3xl md:text-4xl font-bold text-[#0d3a37] mb-2">{{ __('website.student_result_search') }}</h1>
+            <p class="text-gray-600">{{ __('website.result_search_desc') }}</p>
             <div class="w-24 h-1 bg-green-500 mx-auto mt-4 rounded-full"></div>
         </div>
 
@@ -17,7 +19,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
-                    Search Criteria
+                    {{ __('website.search_criteria') }}
                 </h2>
             </div>
 
@@ -26,11 +28,11 @@
                     <!-- Session -->
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-gray-700 flex items-center">
-                            Session <span class="text-red-500 ml-1">*</span>
+                            {{ __('website.session') }} <span class="text-red-500 ml-1">*</span>
                         </label>
                         <select name="session" x-model="formData.session" required
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 outline-none">
-                            <option value="">Select Session</option>
+                            <option value="">{{ __('website.select_session') }}</option>
                             @foreach($options['admissionSessions'] as $session)
                                 <option value="{{ data_get($session, 'id') }}">{{ data_get($session, 'session') }}</option>
                             @endforeach
@@ -40,11 +42,11 @@
                     <!-- Program -->
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-gray-700 flex items-center">
-                            Program <span class="text-red-500 ml-1">*</span>
+                            {{ __('website.program') }} <span class="text-red-500 ml-1">*</span>
                         </label>
                         <select name="program" x-model="formData.program" required
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 outline-none">
-                            <option value="">Select Program</option>
+                            <option value="">{{ __('website.select_program') }}</option>
                             @foreach($options['programs'] as $program)
                                 <option value="{{ data_get($program, 'id') }}">{{ data_get($program, 'name') }}</option>
                             @endforeach
@@ -54,11 +56,11 @@
                     <!-- Group -->
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-gray-700 flex items-center">
-                            Group <span class="text-red-500 ml-1">*</span>
+                            {{ __('website.group') }} <span class="text-red-500 ml-1">*</span>
                         </label>
                         <select name="group" x-model="formData.group" required
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 outline-none">
-                            <option value="">Select Group</option>
+                            <option value="">{{ __('website.select_group') }}</option>
                             @foreach($options['groups'] as $group)
                                 <option value="{{ data_get($group, 'id') }}">{{ data_get($group, 'group') }}</option>
                             @endforeach
@@ -68,33 +70,33 @@
                     <!-- Exam Name -->
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-gray-700 flex items-center">
-                            Exam Name <span class="text-red-500 ml-1">*</span>
+                            {{ __('website.exam_name') }} <span class="text-red-500 ml-1">*</span>
                         </label>
                         <select name="exam_name" x-model="formData.exam_name" required
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 outline-none">
-                            <option value="">Select Exam</option>
-                            <option value="Half Yearly">Half Yearly</option>
-                            <option value="Annual">Annual</option>
-                            <option value="Pre-Test">Pre-Test</option>
-                            <option value="Test">Test</option>
+                            <option value="">{{ __('website.select_exam') }}</option>
+                            <option value="Half Yearly">{{ __('website.half_yearly') }}</option>
+                            <option value="Annual">{{ __('website.annual') }}</option>
+                            <option value="Pre-Test">{{ __('website.pre_test') }}</option>
+                            <option value="Test">{{ __('website.test') }}</option>
                         </select>
                     </div>
 
                     <!-- Roll No -->
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-gray-700 flex items-center">
-                            Roll Number <span class="text-red-500 ml-1">*</span>
+                            {{ __('website.roll_number') }} <span class="text-red-500 ml-1">*</span>
                         </label>
-                        <input type="text" name="roll" x-model="formData.roll" required placeholder="Enter Roll Number"
+                        <input type="text" name="roll" x-model="formData.roll" required placeholder="{{ __('website.enter_roll_number') }}"
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 outline-none">
                     </div>
 
                     <!-- Password -->
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-gray-700 flex items-center">
-                            Password <span class="text-red-500 ml-1">*</span>
+                            {{ __('website.password') }} <span class="text-red-500 ml-1">*</span>
                         </label>
-                        <input type="password" name="password" x-model="formData.password" required placeholder="Enter Password"
+                        <input type="password" name="password" x-model="formData.password" required placeholder="{{ __('website.enter_password_placeholder') }}"
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 outline-none">
                     </div>
                 </div>
@@ -106,14 +108,14 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        Get Result
+                        {{ __('website.get_result') }}
                     </button>
                     <button type="button" @click="resetForm()"
                         class="sm:w-32 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-lg transition duration-200 flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                         </svg>
-                        Reset
+                        {{ __('website.reset') }}
                     </button>
                 </div>
             </form>
@@ -128,8 +130,8 @@
                     </svg>
                 </div>
                 <div>
-                    <h4 class="text-sm font-bold text-blue-800">Forgot Password?</h4>
-                    <p class="text-xs text-blue-600 mt-1">Please contact the college administration office to reset your result portal password.</p>
+                    <h4 class="text-sm font-bold text-blue-800">{{ __('website.result_forgot_password') }}</h4>
+                    <p class="text-xs text-blue-600 mt-1">{{ __('website.result_forgot_password_desc') }}</p>
                 </div>
             </div>
             <div class="bg-amber-50 p-4 rounded-xl flex items-start">
@@ -139,8 +141,8 @@
                     </svg>
                 </div>
                 <div>
-                    <h4 class="text-sm font-bold text-amber-800">Official Results</h4>
-                    <p class="text-xs text-amber-600 mt-1">Online results are for immediate information only. For official transcripts, visit the campus.</p>
+                    <h4 class="text-sm font-bold text-amber-800">{{ __('website.official_results') }}</h4>
+                    <p class="text-xs text-amber-600 mt-1">{{ __('website.official_results_desc') }}</p>
                 </div>
             </div>
         </div>

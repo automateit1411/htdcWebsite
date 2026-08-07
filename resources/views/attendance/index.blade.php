@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
+@section('title', 'Daily Attendance - Hazera-Taju Degree College')
+
 @section('content')
 <div class="container mx-auto px-4 py-8">
     <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
         <!-- Header -->
         <div class="bg-[#0d3a37] p-6 text-center">
-            <h1 class="text-2xl md:text-3xl font-bold text-white uppercase tracking-wider">Daily Attendance Report</h1>
+            <h1 class="text-2xl md:text-3xl font-bold text-white uppercase tracking-wider">{{ __('website.daily_attendance_report') }}</h1>
             <p class="text-green-200 mt-2">Academic Session: {{ date('Y') }}-{{ date('Y')+1 }}</p>
         </div>
 
@@ -16,7 +18,7 @@
                 <thead>
                     <!-- First Header Row -->
                     <tr class="bg-gray-100 text-[#0d3a37] uppercase">
-                        <th rowspan="2" class="border border-gray-300 px-4 py-3 min-w-[120px]">Date</th>
+                        <th rowspan="2" class="border border-gray-300 px-4 py-3 min-w-[120px]">{{ __('website.date') }}</th>
                         <th colspan="3" class="border border-gray-300 px-4 py-3 bg-blue-50">HSC</th>
                         <th colspan="3" class="border border-gray-300 px-4 py-3 bg-purple-50">Honours</th>
                         <th colspan="3" class="border border-gray-300 px-4 py-3 bg-amber-50">Degree</th>
@@ -24,17 +26,17 @@
                     <!-- Second Header Row -->
                     <tr class="bg-gray-50 text-gray-700 font-semibold">
                         <!-- HSC -->
-                        <th class="border border-gray-300 px-2 py-2 bg-blue-50/50">Science</th>
-                        <th class="border border-gray-300 px-2 py-2 bg-blue-50/50">Business</th>
-                        <th class="border border-gray-300 px-2 py-2 bg-blue-50/50">Humanities</th>
+                        <th class="border border-gray-300 px-2 py-2 bg-blue-50/50">{{ __('website.select_science') }}</th>
+                        <th class="border border-gray-300 px-2 py-2 bg-blue-50/50">{{ __('website.select_business') }}</th>
+                        <th class="border border-gray-300 px-2 py-2 bg-blue-50/50">{{ __('website.select_humanities') }}</th>
                         <!-- Honours -->
                         <th class="border border-gray-300 px-2 py-2 bg-purple-50/50">BBA</th>
                         <th class="border border-gray-300 px-2 py-2 bg-purple-50/50">BSA</th>
                         <th class="border border-gray-300 px-2 py-2 bg-purple-50/50">BSS</th>
                         <!-- Degree -->
-                        <th class="border border-gray-300 px-2 py-2 bg-amber-50/50">Accounting</th>
-                        <th class="border border-gray-300 px-2 py-2 bg-amber-50/50">Management</th>
-                        <th class="border border-gray-300 px-2 py-2 bg-amber-50/50">Economics</th>
+                        <th class="border border-gray-300 px-2 py-2 bg-amber-50/50">{{ __('website.select_accounting') }}</th>
+                        <th class="border border-gray-300 px-2 py-2 bg-amber-50/50">{{ __('website.select_management') }}</th>
+                        <th class="border border-gray-300 px-2 py-2 bg-amber-50/50">{{ __('website.select_economics') }}</th>
                     </tr>
                 </thead>
                 <tbody class="text-center divide-y divide-gray-200">
@@ -73,8 +75,8 @@
                 <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
                 </svg>
-                <h3 class="mt-2 text-sm font-medium text-gray-900">No attendance data</h3>
-                <p class="mt-1 text-sm text-gray-500">No attendance records have been added yet.</p>
+                <h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('website.no_attendance_data') }}</h3>
+                <p class="mt-1 text-sm text-gray-500">{{ __('website.no_attendance_records') }}</p>
             </div>
             @endif
         </div>
@@ -84,11 +86,11 @@
             <div class="flex flex-wrap gap-4 text-xs font-semibold uppercase tracking-wider">
                 <div class="flex items-center">
                     <span class="w-3 h-3 bg-green-600 rounded-full mr-2"></span>
-                    <span>High ( >= 80%)</span>
+                    <span>{{ __('website.high_attendance') }}</span>
                 </div>
                 <div class="flex items-center">
                     <span class="w-3 h-3 bg-red-600 rounded-full mr-2"></span>
-                    <span>Low ( < 80%)</span>
+                    <span>{{ __('website.low_attendance') }}</span>
                 </div>
             </div>
         </div>

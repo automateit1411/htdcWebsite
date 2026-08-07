@@ -14,14 +14,14 @@
         </div>
 
         <div class="text-4xl font-black text-gray-800 mb-1">403</div>
-        <h1 class="text-xl font-bold text-gray-800 mb-1">Access Forbidden</h1>
+        <h1 class="text-xl font-bold text-gray-800 mb-1">{{ __('website.access_forbidden') }}</h1>
         <h2 class="text-base font-medium text-amber-600 mb-4 bn-font">অনুপ্রবেশ সংরক্ষিত / অনুমতি নেই</h2>
 
         <p class="text-gray-600 text-sm mb-2 leading-relaxed">
-            You do not have permission to access this page or resource.
+            {{ __('website.forbidden_desc') }}
         </p>
         <p class="text-gray-500 text-xs mb-8 bn-font">
-            এই পেজ বা রিসোর্সে প্রবেশ করার জন্য প্রয়োজনীয় অনুমতি আপনার নেই।
+            এই পেজ বা রিসোর্সে প্রবেশ করার জন্য প্রয়োজনীয় অনুমতি আপনার নেই।
         </p>
 
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
@@ -29,7 +29,7 @@
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                 </svg>
-                Go to Home / মূল পাতায় ফিরে যান
+                {{ __('website.go_to_home') }}
             </a>
         </div>
     </div>

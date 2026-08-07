@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
+@section('title', 'Useful Links - Hazera-Taju Degree College')
+
 @section('content')
 <div class="container mx-auto px-4 py-12">
     <div class="max-w-4xl mx-auto">
         <div class="text-center mb-10">
-            <h1 class="text-3xl md:text-4xl font-bold text-[#0d3a37] mb-2">Useful Links</h1>
-            <p class="text-gray-600 italic">"Quick access to important websites and resources."</p>
+            <h1 class="text-3xl md:text-4xl font-bold text-[#0d3a37] mb-2">{{ __('website.useful_links_title') }}</h1>
+            <p class="text-gray-600 italic">"{{ __('website.useful_links_desc') }}"</p>
             <div class="w-20 h-1 bg-green-500 mx-auto mt-4 rounded-full"></div>
         </div>
 
@@ -36,8 +38,8 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
             </svg>
-            <p class="text-gray-500 text-lg">No links available at the moment.</p>
-            <p class="text-gray-400 text-sm mt-1">Please check back later.</p>
+            <p class="text-gray-500 text-lg">{{ __('website.no_links') }}</p>
+            <p class="text-gray-400 text-sm mt-1">{{ __('website.check_back_later') }}</p>
         </div>
         @endif
     </div>

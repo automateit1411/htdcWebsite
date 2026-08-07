@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Staff - Hazera-Taju Degree College')
+
 @section('content')
     <div class="p-4">
         <div x-data="{
@@ -9,18 +11,18 @@
                 init() {
                     fetch('/proxy/employees/staff')
                         .then(response => {
-                            if (!response.ok) throw new Error('Failed to fetch staff data');
+                            if (!response.ok) throw new Error('{{ __('admin.error') }}');
                             return response.json();
                         })
                         .then(data => this.staffs = data)
-                        .catch(err => this.error = err.message || 'Unable to load staff')
+                        .catch(err => this.error = err.message || '{{ __('admin.error') }}')
                         .finally(() => this.loading = false);
                 }
             }" x-init="init()">
 
             {{-- Header --}}
             <div class="flex items-center gap-3 mb-4">
-                <h1 class="text-xl font-bold text-gray-800">Staff Information</h1>
+                <h1 class="text-xl font-bold text-gray-800">{{ __('admin.staff_information') }}</h1>
                 <template x-if="!loading && staffs.length > 0">
                     <span class="bg-[#0d3a37] text-white text-xs font-medium px-2.5 py-0.5 rounded-full"
                         x-text="'(' + staffs.length + ')'"></span>
@@ -29,7 +31,7 @@
 
             <template x-if="loading">
                 <div class="flex items-center justify-center py-20">
-                    <div class="text-gray-500 text-sm">Loading staff members...</div>
+                    <div class="text-gray-500 text-sm">{{ __('admin.loading_staff_members') }}</div>
                 </div>
             </template>
 
@@ -47,7 +49,7 @@
                                         class="block bg-white rounded-xl border border-gray-100 p-4 transition hover:shadow-lg hover:border-[#3dab8c] group">
                                         <div class="flex justify-center mb-3">
                                             <img :src="staff.profileScan || 'https://via.placeholder.com/150'"
-                                                alt="Staff Photo"
+                                                alt="{{ __('admin.staff_information') }}"
                                                 class="h-20 w-20 rounded-full object-cover border-2 border-gray-100 group-hover:border-[#3dab8c] transition" />
                                         </div>
                                         <h2 class="text-sm font-bold text-gray-800 text-center leading-tight"
@@ -62,7 +64,7 @@
 
                     <template x-if="staffs.length === 0">
                         <div class="text-center py-20">
-                            <p class="text-gray-400 text-sm">No staff found.</p>
+                            <p class="text-gray-400 text-sm">{{ __('admin.no_staff_found') }}</p>
                         </div>
                     </template>
                 </div>

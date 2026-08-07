@@ -26,6 +26,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Set locale from database setting (global for both admin and website)
+        try {
+            $setting = \App\Models\Setting::first();
+            $dbLocale = $setting->site_language ?? config('app.locale');
+            if (in_array($dbLocale, ['en', 'bn'])) {
+                app()->setLocale($dbLocale);
+            }
+        } catch (\Throwable $e) {
+            // fallback to config locale
+        }
+
         View::composer('layouts.app', function ($view) {
             try {
                 $view->with('globalNotices', \App\Models\Notice::where('is_active', true)->latest()->get());

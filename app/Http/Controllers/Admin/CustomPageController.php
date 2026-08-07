@@ -26,12 +26,17 @@ class CustomPageController extends Controller
     {
         $validated = $request->validate([
             'page_name' => 'required|string|max:255',
+            'page_name_bn' => 'nullable|string|max:255',
             'category' => 'nullable|string|max:255',
+            'category_bn' => 'nullable|string|max:255',
             'subcategory' => 'nullable|string|max:255',
+            'subcategory_bn' => 'nullable|string|max:255',
             'title' => 'nullable|string|max:255',
+            'title_bn' => 'nullable|string|max:255',
             'file' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:10240',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
             'description' => 'nullable|string',
+            'description_bn' => 'nullable|string',
             'route' => 'nullable|string|max:255',
             'status' => 'boolean',
         ]);
@@ -54,7 +59,7 @@ class CustomPageController extends Controller
             $customPage->update(['image_path' => $imagePath]);
         }
 
-        return redirect()->route('admin.custom-pages.index')->with('success', 'Page created successfully.');
+        return redirect()->route('admin.custom-pages.index')->with('success', __('admin.page_created'));
     }
 
     public function edit(CustomPage $custom_page)
@@ -68,12 +73,17 @@ class CustomPageController extends Controller
     {
         $validated = $request->validate([
             'page_name' => 'required|string|max:255',
+            'page_name_bn' => 'nullable|string|max:255',
             'category' => 'nullable|string|max:255',
+            'category_bn' => 'nullable|string|max:255',
             'subcategory' => 'nullable|string|max:255',
+            'subcategory_bn' => 'nullable|string|max:255',
             'title' => 'nullable|string|max:255',
+            'title_bn' => 'nullable|string|max:255',
             'file' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:10240',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
             'description' => 'nullable|string',
+            'description_bn' => 'nullable|string',
             'route' => 'nullable|string|max:255',
             'status' => 'boolean',
         ]);
@@ -108,7 +118,7 @@ class CustomPageController extends Controller
             $custom_page->update(['image_path' => $imagePath]);
         }
 
-        return redirect()->route('admin.custom-pages.index')->with('success', 'Page updated successfully.');
+        return redirect()->route('admin.custom-pages.index')->with('success', __('admin.page_updated'));
     }
 
     public function settings(CustomPage $custom_page)
@@ -121,7 +131,9 @@ class CustomPageController extends Controller
     {
         $validated = $request->validate([
             'title' => 'nullable|string|max:255',
+            'title_bn' => 'nullable|string|max:255',
             'description' => 'nullable|string',
+            'description_bn' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
             'file' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:10240',
             'gallery_image_path' => 'nullable|string',
@@ -129,7 +141,9 @@ class CustomPageController extends Controller
 
         $custom_page->update([
             'title' => $validated['title'],
+            'title_bn' => $validated['title_bn'] ?? null,
             'description' => $validated['description'],
+            'description_bn' => $validated['description_bn'] ?? null,
         ]);
 
         // Handle Image Upload
@@ -162,7 +176,7 @@ class CustomPageController extends Controller
             $custom_page->update(['file_path' => $filePath]);
         }
 
-        return back()->with('success', 'Page content updated successfully.');
+        return back()->with('success', __('admin.page_content_updated'));
     }
 
     public function destroy(CustomPage $custom_page)
@@ -175,6 +189,6 @@ class CustomPageController extends Controller
         }
         $custom_page->delete();
 
-        return redirect()->route('admin.custom-pages.index')->with('success', 'Page deleted successfully.');
+        return redirect()->route('admin.custom-pages.index')->with('success', __('admin.page_deleted'));
     }
 }

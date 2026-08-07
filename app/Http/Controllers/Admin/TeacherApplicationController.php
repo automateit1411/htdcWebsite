@@ -30,13 +30,13 @@ class TeacherApplicationController extends Controller
         ]);
 
         return redirect()->route('admin.teacher-applications.index')
-            ->with('success', 'Application status updated successfully.');
+            ->with('success', __('admin.application_status_updated'));
     }
 
     public function destroy(TeacherApplication $teacherApplication)
     {
         $teacherApplication->delete();
         return redirect()->route('admin.teacher-applications.index')
-            ->with('success', 'Application deleted successfully.');
+            ->with('success', __('admin.application_deleted'));
     }
 }

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Gallery - Hazera-Taju Degree College')
+
 @section('content')
     @php
         // Fetch gallery items directly from the model as requested (backend is untouched)
@@ -13,10 +15,9 @@
         <!-- Page Header -->
         <div class="text-center mb-1 bg-white shadow">
             <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900  tracking-tight">
-                <span class="bg-gradient-to-r from-[#3dab8c] to-[#0d3a37] bg-clip-text text-transparent">Photo
-                    Gallery</span>
+                <span class="bg-gradient-to-r from-[#3dab8c] to-[#0d3a37] bg-clip-text text-transparent">{{ __('website.gallery_title') }}</span>
             </h1>
-            <p class="text-gray-500 max-w-2xl mx-auto text-lg">Explore the vibrant campus life and memorable moments</p>
+            <p class="text-gray-500 max-w-2xl mx-auto text-lg">{{ __('website.gallery_desc') }}</p>
         </div>
 
         <!-- Gallery Context -->
@@ -27,7 +28,7 @@
                     <button @click="setFilter('all')"
                         :class="activeFilter === 'all' ? 'bg-gradient-to-r from-[#3dab8c] to-[#0d3a37] text-white shadow-lg shadow-[#3dab8c]/30' : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900 border border-gray-200'"
                         class="px-3  rounded font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95">
-                        All
+                        {{ __('website.all') }}
                     </button>
                     @foreach($categories as $category)
                         <button @click="setFilter('{{ $category }}')"
@@ -47,8 +48,8 @@
                             d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
                         </path>
                     </svg>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-3">No Photos Available</h3>
-                    <p class="text-gray-500 text-lg">Our gallery is currently empty. Please check back later!</p>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">{{ __('website.no_photos') }}</h3>
+                    <p class="text-gray-500 text-lg">{{ __('website.no_photos_desc') }}</p>
                 </div>
             @else
                 <div class="h-[calc(100vh-200px)] overflow-y-auto pr-2">
