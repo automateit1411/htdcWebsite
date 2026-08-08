@@ -376,8 +376,8 @@
                 @if($setting->google_map_embed)
                 <div class="mt-4">
                     <label class="block text-sm font-medium text-gray-700 mb-2">{{ __('admin.current_map_preview') }}</label>
-                    <div class="border rounded-lg overflow-hidden h-64">
-                        {!! clean_html($setting->google_map_embed) !!}
+                    <div class="border rounded-lg overflow-hidden h-64" style="position: relative;">
+                        <div style="width: 100%; height: 100%;">{!! clean_html($setting->google_map_embed) !!}</div>
                     </div>
                 </div>
                 @endif

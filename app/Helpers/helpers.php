@@ -14,14 +14,25 @@ if (!function_exists('clean_html')) {
             return '';
         }
 
-        // Temporarily protect safe iframes (Google Maps)
+        // Temporarily protect safe iframes (Google Maps and trusted sources)
         $safeIframes = [];
-        $html = preg_replace_callback('/<iframe\b[^>]*src=["\']([^"\']*(?:google\.com\/maps|maps\.google\.com|maps\.app\.goo\.gl)[^"\']*)["\'][^>]*>.*?<\/iframe>/is', function ($matches) use (&$safeIframes) {
+        $html = preg_replace_callback('/<iframe\b[^>]*>.*?<\/iframe>/is', function ($matches) use (&$safeIframes) {
+            $iframe = $matches[0];
+            // Check if this is a safe iframe (Google Maps)
+            if (preg_match('/src=["\'][^"\']*(?:google\.com\/maps|maps\.google\.com|maps\.app\.goo\.gl|www\.google\.com\/maps)[^"\']*["\']/i', $iframe)) {
+                $safeIframes[] = $iframe;
+                return '{{SAFE_IFRAME_' . (count($safeIframes) - 1) . '}}';
+            }
+            return '';
+        }, $html);
+
+        // Also protect iframes without closing tag (self-closing or malformed)
+        $html = preg_replace_callback('/<iframe\b[^>]*(?:google\.com\/maps|maps\.google\.com|maps\.app\.goo\.gl|www\.google\.com\/maps)[^>]*>/i', function ($matches) use (&$safeIframes) {
             $safeIframes[] = $matches[0];
             return '{{SAFE_IFRAME_' . (count($safeIframes) - 1) . '}}';
         }, $html);
 
-        // Strip dangerous tags completely
+        // Strip remaining dangerous tags completely
         $dangerousTags = ['script', 'iframe', 'object', 'embed', 'form', 'input', 'textarea', 'button', 'select', 'link', 'meta', 'base'];
         foreach ($dangerousTags as $tag) {
             $html = preg_replace('/<' . $tag . '\b[^>]*>(.*?)<\/' . $tag . '>/is', '', $html);

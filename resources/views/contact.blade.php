@@ -218,7 +218,7 @@
                 <!-- Google Maps Embed -->
                 @if($settings->google_map_embed)
                     <div class="relative w-full h-[350px]">
-                        {!! clean_html($settings->google_map_embed) !!}
+                        <div style="width: 100%; height: 100%;">{!! clean_html($settings->google_map_embed) !!}</div>
 
                         <!-- Overlay Gradient at Bottom -->
                         <div
