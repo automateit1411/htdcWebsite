@@ -3,6 +3,7 @@
 if (!function_exists('clean_html')) {
     /**
      * Sanitize HTML content - allows safe formatting tags but strips dangerous elements.
+     * Allows Google Maps iframes from trusted sources.
      *
      * @param string $html
      * @return string
@@ -12,6 +13,13 @@ if (!function_exists('clean_html')) {
         if (empty($html)) {
             return '';
         }
+
+        // Temporarily protect safe iframes (Google Maps)
+        $safeIframes = [];
+        $html = preg_replace_callback('/<iframe\b[^>]*src=["\']([^"\']*(?:google\.com\/maps|maps\.google\.com|maps\.app\.goo\.gl)[^"\']*)["\'][^>]*>.*?<\/iframe>/is', function ($matches) use (&$safeIframes) {
+            $safeIframes[] = $matches[0];
+            return '{{SAFE_IFRAME_' . (count($safeIframes) - 1) . '}}';
+        }, $html);
 
         // Strip dangerous tags completely
         $dangerousTags = ['script', 'iframe', 'object', 'embed', 'form', 'input', 'textarea', 'button', 'select', 'link', 'meta', 'base'];
@@ -29,6 +37,11 @@ if (!function_exists('clean_html')) {
 
         // Strip data: URIs (except images)
         $html = preg_replace('/data:(?!image\/)/i', 'data-blocked:', $html);
+
+        // Restore safe iframes
+        foreach ($safeIframes as $index => $iframe) {
+            $html = str_replace('{{SAFE_IFRAME_' . $index . '}}', $iframe, $html);
+        }
 
         return $html;
     }
