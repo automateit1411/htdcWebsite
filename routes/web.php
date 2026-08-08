@@ -57,8 +57,8 @@ Route::get('/accounts/login/employee', [PageController::class, 'employeeLogin'])
 // Student Application Routes
 Route::get('/apply', [StudentApplicationController::class, 'create'])->name('apply');
 Route::post('/apply', [StudentApplicationController::class, 'store'])->name('applications.store')->middleware('throttle:application-submit');
-Route::get('/applications/{application}', [StudentApplicationController::class, 'show'])->name('applications.show');
-Route::get('/applications/{application}/download', [StudentApplicationController::class, 'download'])->name('applications.download');
+Route::get('/applications/{application}', [StudentApplicationController::class, 'show'])->name('applications.show')->middleware('throttle:application-view');
+Route::get('/applications/{application}/download', [StudentApplicationController::class, 'download'])->name('applications.download')->middleware('throttle:application-view');
 
 // API Proxy Routes to avoid CORS (rate limited)
 Route::get('/proxy/groups/{programId}', [StudentApplicationController::class, 'proxyGroups'])->middleware('throttle:proxy-api');
@@ -101,9 +101,9 @@ Route::get('/proxy/student-statistics', function () {
 
 // Teacher Application Routes
 Route::get('/teacher/apply', [TeacherApplicationController::class, 'create'])->name('teacher.apply');
-Route::post('/teacher/apply', [TeacherApplicationController::class, 'store'])->name('teacher-applications.store');
-Route::get('/teacher/applications/{application}', [TeacherApplicationController::class, 'show'])->name('teacher-applications.show');
-Route::get('/teacher/applications/{application}/download', [TeacherApplicationController::class, 'download'])->name('teacher-applications.download');
+Route::post('/teacher/apply', [TeacherApplicationController::class, 'store'])->name('teacher-applications.store')->middleware('throttle:application-submit');
+Route::get('/teacher/applications/{application}', [TeacherApplicationController::class, 'show'])->name('teacher-applications.show')->middleware('throttle:application-view');
+Route::get('/teacher/applications/{application}/download', [TeacherApplicationController::class, 'download'])->name('teacher-applications.download')->middleware('throttle:application-view');
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NoticeController;
@@ -124,13 +124,13 @@ use App\Http\Controllers\Admin\DatabaseExportController;
 
 // Super Admin Routes
 Route::get('/super-admin/login', [SuperAdminAuthController::class, 'showLogin'])->name('super-admin.login');
-Route::post('/super-admin/login', [SuperAdminAuthController::class, 'login'])->name('super-admin.login.submit');
+Route::post('/super-admin/login', [SuperAdminAuthController::class, 'login'])->name('super-admin.login.submit')->middleware('throttle:5,1');
 Route::get('/super-admin/otp', [SuperAdminAuthController::class, 'showOtp'])->name('super-admin.otp');
-Route::post('/super-admin/otp/verify', [SuperAdminAuthController::class, 'verifyOtp'])->name('super-admin.otp.verify');
+Route::post('/super-admin/otp/verify', [SuperAdminAuthController::class, 'verifyOtp'])->name('super-admin.otp.verify')->middleware('throttle:5,1');
 Route::post('/super-admin/logout', [SuperAdminAuthController::class, 'logout'])->name('super-admin.logout');
 
 Route::get('/admin/login', [AuthController::class, 'login'])->name('admin.login');
-Route::post('/admin/login', [AuthController::class, 'authenticate'])->name('admin.authenticate');
+Route::post('/admin/login', [AuthController::class, 'authenticate'])->name('admin.authenticate')->middleware('throttle:5,1');
 Route::post('/admin/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth', 'single.session'])->prefix('admin')->name('admin.')->group(function () {

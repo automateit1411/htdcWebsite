@@ -1,66 +1,269 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# HTDC - Hajee Mohammad Danesh Science & Technology College
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive web application for Hajee Mohammad Danesh Science & Technology College (HTDC) managing student admissions, teacher applications, attendance, notices, gallery, and administrative operations.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Student Management
+- Online student application submission
+- Application tracking with PIN code
+- PDF generation for applications
+- Bulk application management
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Teacher Management
+- Teacher application submission
+- Document upload (photos, certificates, marksheet scans)
+- Application status tracking
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Attendance System
+- Daily attendance tracking
+- Program-wise attendance reports
+- Bulk attendance creation
 
-## Learning Laravel
+### Content Management
+- Notice board with rich text content
+- Gallery management with image uploads
+- Slider/banner management
+- Custom page management (multi-level hierarchy)
+- Form downloads management
+- Teacher & staff vacant posts
+- Website links management
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Administrative Panel
+- Role-based access control (Admin, Editor, Viewer)
+- Single session enforcement
+- Database export functionality
+- User management
+- Site settings management
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Multi-language Support
+- English and Bengali language support
+- Dynamic content translation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### External API Integration
+- Admission API integration
+- Student statistics
+- Program, session, group data
 
-## Laravel Sponsors
+## Requirements
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- **PHP**: ^8.0.2
+- **Laravel**: ^9.19
+- **MySQL**: 5.7+ or 8.0+
+- **Node.js**: ^16.0 (for frontend assets)
+- **Composer**: ^2.0
 
-### Premium Partners
+## Installation
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### 1. Clone the Repository
 
-## Contributing
+```bash
+git clone <repository-url>
+cd htdc-project
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2. Install PHP Dependencies
 
-## Code of Conduct
+```bash
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 3. Install Node Dependencies
 
-## Security Vulnerabilities
+```bash
+npm install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 4. Environment Configuration
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+### 5. Configure `.env` File
+
+```env
+APP_NAME=HTDC
+APP_ENV=production
+APP_KEY=<generated-key>
+APP_DEBUG=false
+APP_URL=https://your-domain.com
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=htdc
+DB_USERNAME=your_db_user
+DB_PASSWORD=your_db_password
+
+MAIL_MAILER=smtp
+MAIL_HOST=your-mail-host
+MAIL_PORT=465
+MAIL_USERNAME=your-email
+MAIL_PASSWORD=your-mail-password
+MAIL_ENCRYPTION=ssl
+
+SESSION_SECURE_COOKIE=true
+```
+
+### 6. Database Setup
+
+```bash
+php artisan migrate --force
+php artisan db:seed
+```
+
+### 7. Storage Link
+
+```bash
+php artisan storage:link
+```
+
+### 8. Cache Optimization
+
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+## Running the Application
+
+### Development
+
+```bash
+php artisan serve
+npm run dev
+```
+
+### Production
+
+```bash
+# Run queue worker
+php artisan queue:work --sleep=3 --tries=3
+
+# Or use Supervisor (recommended)
+# Configure supervisor for queue:work
+```
+
+## API Endpoints
+
+### Public Data APIs
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/programs/admission` | Get admission programs |
+| GET | `/api/sessions/admission` | Get admission sessions |
+| GET | `/api/groups` | Get all groups |
+| GET | `/api/occupations/all` | Get occupations |
+| GET | `/api/qualifications/all` | Get qualifications |
+| GET | `/api/districts/all` | Get districts |
+| GET | `/api/boards/all` | Get education boards |
+| GET | `/api/constants` | Get application constants |
+
+### Protected APIs (Requires Sanctum Token)
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/applications` | List applications |
+| GET | `/api/applications/{id}` | Get application details |
+| POST | `/api/applications/{id}/status` | Update application status |
+| GET | `/api/daily-attendance` | Get attendance data |
+| POST | `/api/daily-attendance` | Store attendance data |
+
+## Admin Panel
+
+### Default Credentials
+
+**Super Admin:**
+- Email: `info@htdc.edu.bd`
+- Password: `Htdc@2026!Secure`
+
+> **Important:** Change the password after first login!
+
+### Access URLs
+
+- **Admin Panel:** `https://your-domain.com/admin/login`
+- **Super Admin:** `https://your-domain.com/super-admin/login`
+
+## Security Features
+
+- CSRF protection enabled
+- XSS protection with HTML sanitization
+- Rate limiting on sensitive routes
+- Session encryption enabled
+- Security headers (X-Frame-Options, X-Content-Type-Options, etc.)
+- Password hashing with bcrypt
+- Single session enforcement
+- Mass assignment protection
+
+## Project Structure
+
+```
+app/
+├── Console/Commands/    # Artisan commands
+├── Exceptions/          # Exception handling
+├── Helpers/             # Helper functions
+├── Http/
+│   ├── Controllers/     # Application controllers
+│   ├── Middleware/       # HTTP middleware
+│   └── Kernel.php       # HTTP kernel
+├── Jobs/                # Queue jobs
+├── Models/              # Eloquent models
+├── Providers/           # Service providers
+├── Services/            # Business logic services
+└── View/                # View components
+
+database/
+├── migrations/          # Database migrations
+├── seeders/             # Database seeders
+└── factories/           # Model factories
+
+resources/
+├── views/               # Blade templates
+├── css/                 # Stylesheets
+└── js/                  # JavaScript files
+
+routes/
+├── web.php              # Web routes
+├── api.php              # API routes
+└── console.php          # Console routes
+```
+
+## Queue Configuration
+
+The application uses Redis for queue processing:
+
+```env
+QUEUE_CONNECTION=redis
+```
+
+Run queue worker:
+
+```bash
+php artisan queue:work --sleep=3 --tries=3
+```
+
+## Deployment
+
+### Recommended Stack
+
+- **Server:** Ubuntu 22.04 LTS
+- **Web Server:** Nginx with PHP-FPM
+- **PHP:** 8.1+
+- **Database:** MySQL 8.0
+- **Cache/Queue:** Redis
+
+### Deployment Steps
+
+1. Clone repository on server
+2. Install dependencies (`composer install --no-dev --optimize-autoloader`)
+3. Configure `.env` with production values
+4. Run migrations (`php artisan migrate --force`)
+5. Set storage link (`php artisan storage:link`)
+6. Configure Nginx/Apache
+7. Set up Supervisor for queue worker
+8. Configure SSL certificate
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Proprietary - Hajee Mohammad Danesh Science & Technology College

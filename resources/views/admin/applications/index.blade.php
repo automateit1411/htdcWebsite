@@ -24,7 +24,7 @@
         <!-- Search and Action Field -->
         <div class="flex gap-2 w-full md:w-auto md:max-w-md lg:ml-auto">
             <template x-if="selected.length > 0">
-                <button type="submit" form="bulk-delete-form" class="bg-red-600 text-white px-4 py-2 rounded-md shadow focus:outline-none hover:bg-red-700 font-semibold text-sm flex-shrink-0 transition-opacity" onclick="return confirm('Are you sure you want to delete the selected applications? This cannot be undone.')">
+                <button type="button" @click="if(confirm('Are you sure you want to delete the selected applications? This cannot be undone.')) { const form = document.getElementById('bulk-delete-form'); selected.forEach(id => { const input = document.createElement('input'); input.type = 'hidden'; input.name = 'ids[]'; input.value = id; form.appendChild(input); }); form.submit(); }" class="bg-red-600 text-white px-4 py-2 rounded-md shadow focus:outline-none hover:bg-red-700 font-semibold text-sm flex-shrink-0 transition-opacity">
                     {{ __('admin.delete') }} (<span x-text="selected.length"></span>)
                 </button>
             </template>

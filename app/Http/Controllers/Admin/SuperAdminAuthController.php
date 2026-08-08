@@ -14,7 +14,6 @@ use Illuminate\Support\Str;
 class SuperAdminAuthController extends Controller
 {
     const SUPER_EMAIL = 'info@htdc.edu.bd';
-    const SUPER_PASSWORD = 'htdc@237';
 
     public function showLogin()
     {
@@ -28,7 +27,11 @@ class SuperAdminAuthController extends Controller
             'password' => 'required',
         ]);
 
-        if ($request->email !== self::SUPER_EMAIL || $request->password !== self::SUPER_PASSWORD) {
+        $user = User::where('email', $request->email)
+            ->where('role', User::ROLE_ADMIN)
+            ->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
             return back()->withErrors([
                 'email' => 'Invalid credentials.',
             ])->onlyInput('email');
@@ -73,12 +76,6 @@ class SuperAdminAuthController extends Controller
         $email = session('super_admin_email');
         $inputOtp = $request->otp;
 
-        \Log::info("OTP Verification Attempt", [
-            'email' => $email,
-            'input_otp' => $inputOtp,
-            'session_email' => session('super_admin_email'),
-        ]);
-
         if (!$email) {
             return redirect()->route('super-admin.login')->with('error', __('admin.session_expired'));
         }
@@ -90,11 +87,6 @@ class SuperAdminAuthController extends Controller
                 ->where('expires_at', '>', now())
                 ->first();
 
-            \Log::info("OTP Record Found", [
-                'found' => !!$otpRecord,
-                'otp_record' => $otpRecord ? $otpRecord->toArray() : null,
-            ]);
-
             if (!$otpRecord) {
                 return back()->withErrors([
                     'otp' => 'Invalid or expired OTP. Please try again.',
@@ -103,16 +95,10 @@ class SuperAdminAuthController extends Controller
 
             $otpRecord->update(['is_used' => true]);
 
-            $user = User::where('email', self::SUPER_EMAIL)->first();
+            $user = User::where('email', $email)->first();
 
             if (!$user) {
-                $user = User::create([
-                    'name' => 'Super Admin',
-                    'email' => self::SUPER_EMAIL,
-                    'password' => Hash::make(self::SUPER_PASSWORD),
-                    'role' => User::ROLE_ADMIN,
-                    'mobile' => 0,
-                ]);
+                return redirect()->route('super-admin.login')->with('error', 'User not found.');
             }
 
             $loginToken = Str::uuid()->toString();
@@ -126,9 +112,9 @@ class SuperAdminAuthController extends Controller
 
             return redirect()->route('admin.dashboard');
         } catch (\Exception $e) {
-            \Log::error('OTP Verification Error: ' . $e->getMessage());
+            \Log::error('OTP Verification Error');
             return back()->withErrors([
-                'otp' => 'Something went wrong: ' . $e->getMessage(),
+                'otp' => 'Something went wrong. Please try again.',
             ])->onlyInput('otp');
         }
     }

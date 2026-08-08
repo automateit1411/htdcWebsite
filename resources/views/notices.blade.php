@@ -97,7 +97,7 @@
                                         <!-- Modal Content -->
                                         <div class="prose max-w-none mb-6">
                                             <div class="text-gray-700">
-                                                {!! $notice->content !!}
+                                                {!! clean_html($notice->content) !!}
                                             </div>
                                         </div>
                                         

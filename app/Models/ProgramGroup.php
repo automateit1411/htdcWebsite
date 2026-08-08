@@ -9,7 +9,10 @@ class ProgramGroup extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'program_id',
+    ];
 
     public function attendances()
     {

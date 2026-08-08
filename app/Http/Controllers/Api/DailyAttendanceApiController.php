@@ -27,19 +27,14 @@ class DailyAttendanceApiController extends Controller
                 'success' => true,
                 'data' => $attendanceData,
                 'date' => $date,
-            ])
-            ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'GET, OPTIONS')
-            ->header('Access-Control-Allow-Headers', 'Content-Type');
+            ]);
         } catch (\Exception $e) {
             Log::error("Daily Attendance API Error: " . $e->getMessage());
             
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to fetch daily attendance data',
-                'error' => $e->getMessage(),
-            ], 500)
-            ->header('Access-Control-Allow-Origin', '*');
+            ], 500);
         }
     }
 
@@ -66,19 +61,14 @@ class DailyAttendanceApiController extends Controller
                 'success' => true,
                 'message' => 'Attendance stored successfully',
                 'data' => $result,
-            ])
-            ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'POST, OPTIONS')
-            ->header('Access-Control-Allow-Headers', 'Content-Type');
+            ]);
         } catch (\Exception $e) {
             Log::error("Daily Attendance Store Error: " . $e->getMessage());
             
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to store attendance',
-                'error' => $e->getMessage(),
-            ], 500)
-            ->header('Access-Control-Allow-Origin', '*');
+            ], 500);
         }
     }
 }

@@ -14,10 +14,7 @@ class DataController extends Controller
             ['id' => 2, 'name' => 'Degree (Pass)', 'admissionStatus' => true],
             ['id' => 3, 'name' => 'Honours', 'admissionStatus' => true],
         ];
-        return response()->json($programs)
-            ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'GET, OPTIONS')
-            ->header('Access-Control-Allow-Headers', 'Content-Type');
+        return response()->json($programs);
     }
 
     public function getAdmissionSessions()
@@ -51,10 +48,7 @@ class DataController extends Controller
             return $group['program_id'] == $id;
         });
         
-        return response()->json(array_values($filteredGroups))
-            ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'GET, OPTIONS')
-            ->header('Access-Control-Allow-Headers', 'Content-Type');
+        return response()->json(array_values($filteredGroups));
     }
 
     public function getOccupations()
@@ -92,10 +86,7 @@ class DataController extends Controller
             "Student_Status_CHOICES" => ["ACTIVE", "TC", "Passed Out", "Suspended", "Admission Cancelled", "Dropped"]
         ];
 
-        return response()->json($constants)
-            ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'GET, OPTIONS')
-            ->header('Access-Control-Allow-Headers', 'Content-Type');
+        return response()->json($constants);
     }
 
     public function getHscCourses($program_id, $group_id)

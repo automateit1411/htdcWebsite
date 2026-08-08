@@ -14,13 +14,6 @@ class SingleSession
             $user = Auth::user();
             $sessionToken = session('login_token');
 
-            \Log::info("SingleSession Check", [
-                'user_id' => $user->id,
-                'user_login_token' => $user->login_token,
-                'session_login_token' => $sessionToken,
-                'match' => $user->login_token === $sessionToken,
-            ]);
-
             if ($user->login_token !== $sessionToken) {
                 Auth::logout();
                 $request->session()->invalidate();

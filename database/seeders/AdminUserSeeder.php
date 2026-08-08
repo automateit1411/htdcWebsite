@@ -14,12 +14,17 @@ class AdminUserSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::updateOrCreate(
-            ['email' => 'abc@gmail.com'],
-            [
-                'name' => 'Admin',
-                'password' => bcrypt('abc123'),
-            ]
-        );
+        // Default admin seeder - only for local development
+        // In production, create admin users through the admin panel
+        if (app()->environment('local')) {
+            \App\Models\User::updateOrCreate(
+                ['email' => 'admin@htdc.edu.bd'],
+                [
+                    'name' => 'Admin',
+                    'password' => bcrypt('Change-Me-123!'),
+                    'role' => \App\Models\User::ROLE_ADMIN,
+                ]
+            );
+        }
     }
 }

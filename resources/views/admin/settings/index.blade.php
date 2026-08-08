@@ -377,7 +377,7 @@
                 <div class="mt-4">
                     <label class="block text-sm font-medium text-gray-700 mb-2">{{ __('admin.current_map_preview') }}</label>
                     <div class="border rounded-lg overflow-hidden h-64">
-                        {!! $setting->google_map_embed !!}
+                        {!! clean_html($setting->google_map_embed) !!}
                     </div>
                 </div>
                 @endif

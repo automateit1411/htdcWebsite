@@ -22,6 +22,6 @@ class LanguageController extends Controller
         // Also set for current session
         app()->setLocale($locale);
 
-        return redirect()->back();
+        return redirect('/');
     }
 }

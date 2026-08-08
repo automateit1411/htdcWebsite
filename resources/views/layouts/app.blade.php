@@ -331,8 +331,8 @@
                 @if($notice->isNew())
                     { 
                         id: {{ $notice->id }},
-                        text: '{{ $notice->title }}', 
-                        content: '{!! addslashes(preg_replace('/\s+/', ' ', $notice->content)) !!}',
+                        text: '{{ addslashes($notice->title) }}', 
+                        content: '{!! addslashes(strip_tags(preg_replace('/\s+/', ' ', $notice->content))) !!}',
                         file: '{{ $notice->file_path ? Storage::url($notice->file_path) : '' }}',
                         isNew: true
                     },

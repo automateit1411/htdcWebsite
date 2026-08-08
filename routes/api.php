@@ -35,13 +35,15 @@ Route::get('/boards/all', [DataController::class, 'getBoards']);
 Route::get('/constants', [DataController::class, 'getConstants']);
 Route::get('/hsc/courses/program/{program_id}/group/{group_id}', [DataController::class, 'getHscCourses']);
 
-// Student Application APIs
-Route::get('/applications', [ApplicationApiController::class, 'index']);
-Route::get('/applications/{id}', [ApplicationApiController::class, 'show']);
-Route::post('/applications/{id}/status', [ApplicationApiController::class, 'updateStatus']);
-Route::patch('/applications/{id}/status', [ApplicationApiController::class, 'updateStatus']);
+// Student Application APIs (require authentication)
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/applications', [ApplicationApiController::class, 'index']);
+    Route::get('/applications/{id}', [ApplicationApiController::class, 'show']);
+    Route::post('/applications/{id}/status', [ApplicationApiController::class, 'updateStatus']);
+    Route::patch('/applications/{id}/status', [ApplicationApiController::class, 'updateStatus']);
 
-// Daily Attendance API
-Route::get('/daily-attendance', [DailyAttendanceApiController::class, 'index']);
-Route::post('/daily-attendance', [DailyAttendanceApiController::class, 'store']);
+    // Daily Attendance API
+    Route::get('/daily-attendance', [DailyAttendanceApiController::class, 'index']);
+    Route::post('/daily-attendance', [DailyAttendanceApiController::class, 'store']);
+});
 

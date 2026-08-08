@@ -9,7 +9,14 @@ class DailyAttendance extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'date',
+        'program_group_id',
+        'total_students',
+        'present_students',
+        'absent_students',
+        'percentage',
+    ];
 
     protected $casts = [
         'date' => 'date',

@@ -28,7 +28,7 @@
                 {{-- Content --}}
                 <div class="{{ $page->image ? 'lg:w-3/5' : 'w-full' }} p-3 flex flex-col justify-center">
                     <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-                        {!! $page->content !!}
+                        {!! clean_html($page->content) !!}
                     </div>
                 </div>
             </div>
