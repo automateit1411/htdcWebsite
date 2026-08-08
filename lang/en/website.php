@@ -50,7 +50,7 @@ return [
     'sidebar_teacher_application' => 'Teacher Application',
     'sidebar_principal_list' => 'Principal List',
     'sidebar_vice_principal_list' => 'Vice Principal List',
-    'sidebar_governing_board' => 'GB',
+    'sidebar_governing_board' => 'BOU',
 
     // Sidebar - Department (sub-parents)
     'sidebar_dept_hsc' => 'HSC',
