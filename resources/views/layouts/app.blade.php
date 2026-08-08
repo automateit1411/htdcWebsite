@@ -140,7 +140,7 @@
                     <!-- Bottom Row: Slogan (Right side) -->
                     <div class="w-full flex justify-end"
                          x-data="{ 
-                            slogan: '{{ __('website.non_political_institution') }}',
+                            slogan: 'A NON POLITICAL INSTITUTION',
                             chars: [],
                             visible: [],
                             barPos: 0,
