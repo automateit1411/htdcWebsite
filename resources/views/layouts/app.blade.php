@@ -951,9 +951,10 @@
             <div class="flex items-center gap-3">
                 @if(isset($settings) && $settings->facebook_url)
                 <a href="{{ $settings->facebook_url }}" target="_blank" class="group" aria-label="Facebook">
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-all duration-300" style="background: linear-gradient(135deg, #3B5998, #30487C);">
-                        <svg class="w-5 h-5 text-white" viewBox="0 0 258 258" fill="white" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M84 106l27 0 0 -5c0,-8 -1,-18 0,-26 1,-19 11,-31 37,-32l26 1 0 28c-11,0 -30,-4 -32,10l0 24 30 0 -3 31 -27 0 0 78 -31 0 0 -78 -27 -1 0 -30z"/>
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-all duration-300 overflow-hidden">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M48 24C48 10.7438 37.2562 0 24 0C10.7438 0 0 10.7438 0 24C0 35.9813 8.775 45.9094 20.25 47.7094V30.9375H14.1562V24H20.25V18.7125C20.25 12.6984 23.8313 9.375 29.3156 9.375C31.9406 9.375 34.6875 9.84375 34.6875 9.84375V15.75H31.6594C28.6781 15.75 27.75 17.6016 27.75 19.5V24H34.4062L33.3422 30.9375H27.75V47.7094C39.225 45.9094 48 35.9813 48 24Z" fill="#1877F2"/>
+                            <path d="M33.3422 30.9375L34.4062 24H27.75V19.5C27.75 17.6016 28.6781 15.75 31.6594 15.75H34.6875V9.84375C34.6875 9.84375 31.9406 9.375 29.3156 9.375C23.8313 9.375 20.25 12.6984 20.25 18.7125V24H14.1562V30.9375H20.25V47.7094C21.4734 47.9016 22.725 48 24 48C25.275 48 26.5266 47.9016 27.75 47.7094V30.9375H33.3422Z" fill="white"/>
                         </svg>
                     </div>
                 </a>
