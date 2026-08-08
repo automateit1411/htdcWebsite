@@ -59,24 +59,5 @@
             </div>
         </div>
     </section>
-
-    <!-- Additional Information Section -->
-    <section class="bg-white p-6 rounded shadow">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">{{ __('website.our_legacy') }}</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="bg-gradient-to-br from-[#3dab8c] to-[#0d3a37] text-white p-4 rounded-lg">
-                <h3 class="font-bold text-lg mb-2">{{ __('website.quality_education') }}</h3>
-                <p class="text-sm opacity-90">{{ __('website.quality_education_desc') }}</p>
-            </div>
-            <div class="bg-gradient-to-br from-[#3dab8c] to-[#0d3a37] text-white p-4 rounded-lg">
-                <h3 class="font-bold text-lg mb-2">{{ __('website.non_political') }}</h3>
-                <p class="text-sm opacity-90">{{ __('website.non_political_desc') }}</p>
-            </div>
-            <div class="bg-gradient-to-br from-[#3dab8c] to-[#0d3a37] text-white p-4 rounded-lg">
-                <h3 class="font-bold text-lg mb-2">{{ __('website.student_success') }}</h3>
-                <p class="text-sm opacity-90">{{ __('website.student_success_desc') }}</p>
-            </div>
-        </div>
-    </section>
 </div>
 @endsection
